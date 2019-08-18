@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: amsra.bst
+A level-1 auxiliary file: cover.aux
+A level-1 auxiliary file: contents.aux
+A level-1 auxiliary file: chap1.aux
+A level-1 auxiliary file: chap2.aux
+A level-1 auxiliary file: chap3.aux
+A level-1 auxiliary file: chap4.aux
+A level-1 auxiliary file: biblio.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: main.bib
+Warning--missing date in serrelinrep
+You've used 37 entries,
+            1821 wiz_defined-function locations,
+            772 strings with 8828 characters,
+and the built_in function-call counts, 38121 in all, are:
+= -- 1759
+> -- 3176
+< -- 212
++ -- 987
+- -- 2968
+* -- 3461
+:= -- 7266
+add.period$ -- 0
+call.type$ -- 37
+change.case$ -- 169
+chr.to.int$ -- 564
+cite$ -- 38
+duplicate$ -- 2455
+empty$ -- 1155
+format.name$ -- 205
+if$ -- 4351
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 930
+newline$ -- 463
+num.names$ -- 111
+pop$ -- 1698
+preamble$ -- 2
+purify$ -- 167
+quote$ -- 0
+skip$ -- 779
+stack$ -- 0
+substring$ -- 1005
+swap$ -- 1689
+text.length$ -- 368
+text.prefix$ -- 23
+top$ -- 0
+type$ -- 434
+warning$ -- 1
+while$ -- 533
+width$ -- 0
+write$ -- 1115
+(There was 1 warning)

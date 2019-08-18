@@ -1,0 +1,39 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Background and Definitions}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Weierstrass models and minimal discriminants}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Regular models}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Artin conductor}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.4}{Deligne discriminant}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.5}{Relation between the Deligne discriminant and the Artin conductor}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.6}{Some graph theory}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.7}{N\351ron models}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.8}{Component groups and Tamagawa numbers of Jacobians}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.8.1}{The Artin\205Winters type of a regular S-curve}{section.2.8}% 11
+\BOOKMARK [2][-]{subsection.2.8.9}{Component groups}{section.2.8}% 12
+\BOOKMARK [2][-]{subsection.2.8.13}{Tamagawa numbers}{section.2.8}% 13
+\BOOKMARK [1][-]{section.2.9}{Hirzebruch\205Jung continued fractions}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.10}{Behaviour of regular models under tame extensions}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.11}{N\351ron component series}{chapter.2}% 16
+\BOOKMARK [0][-]{chapter.3}{Comparing conductors and discriminants}{}% 17
+\BOOKMARK [1][-]{section.3.1}{Construction of the regular model}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.2}{An explicit formula for the Deligne discriminant}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.3}{Dual graphs}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.4}{Deligne discriminant and dual graphs}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.5}{Description of the strategy}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.6}{A decomposition of the minimal discriminant}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.6.1}{Weight of a vertex}{section.3.6}% 24
+\BOOKMARK [2][-]{subsection.3.6.3}{Local contribution and weights}{section.3.6}% 25
+\BOOKMARK [1][-]{section.3.7}{A combinatorial description of the local terms in the Deligne discriminant}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.7.9}{Computation of D\(v\) for an even vertex v}{section.3.7}% 27
+\BOOKMARK [2][-]{subsection.3.7.15}{Computation of D\(v\) for an odd vertex v}{section.3.7}% 28
+\BOOKMARK [2][-]{subsection.3.7.21}{Formula for D\(v\)}{section.3.7}% 29
+\BOOKMARK [1][-]{section.3.8}{Comparison of the two discriminants}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.8.1}{A new decomposition of the Deligne discriminant}{section.3.8}% 31
+\BOOKMARK [0][-]{chapter.4}{Computing orders of component groups and Tamagawa numbers of Jacobians}{}% 32
+\BOOKMARK [1][-]{section.4.1}{Explicit computation of the orders of component groups}{chapter.4}% 33
+\BOOKMARK [2][-]{subsection.4.1.1}{The weighted dual graph}{section.4.1}% 34
+\BOOKMARK [2][-]{subsection.4.1.4}{The formula}{section.4.1}% 35
+\BOOKMARK [2][-]{subsection.4.1.9}{Applications of the formula}{section.4.1}% 36
+\BOOKMARK [1][-]{section.4.2}{Explicit computation of Tamagawa numbers}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.2.1}{The quotient graph G"0365G}{section.4.2}% 38
+\BOOKMARK [2][-]{subsection.4.2.2}{Explicit computation of Tamagawa numbers}{section.4.2}% 39

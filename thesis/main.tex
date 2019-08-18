@@ -1,0 +1,141 @@
+% -*- Mode:TeX -*-
+
+%% IMPORTANT: The official thesis specifications are available at:
+%%            http://libraries.mit.edu/archives/thesis-specs/
+%%
+%%            Please verify your thesis' formatting and copyright
+%%            assignment before submission.  If you notice any
+%%            discrepancies between these templates and the 
+%%            MIT Libraries' specs, please let us know
+%%            by e-mailing thesis@mit.edu
+
+%% The documentclass options along with the pagestyle can be used to generate
+%% a technical report, a draft copy, or a regular thesis.  You may need to
+%% re-specify the pagestyle after you \include  cover.tex.  For more
+%% information, see the first few lines of mitthesis.cls. 
+
+%\documentclass[12pt,vi,twoside]{mitthesis}
+%%
+%%  If you want your thesis copyright to you instead of MIT, use the
+%%  ``vi'' option, as above.
+%%
+%\documentclass[12pt,twoside,leftblank]{mitthesis}
+%%
+%% If you want blank pages before new chapters to be labelled ``This
+%% Page Intentionally Left Blank'', use the ``leftblank'' option, as
+%% above. 
+
+\documentclass[12pt,twoside]{mitthesis}
+\usepackage{lgrind}
+%% These have been added at the request of the MIT Libraries, because
+%% some PDF conversions mess up the ligatures.  -LB, 1/22/2014
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath, amssymb, amsthm, mathrsfs, lscape, graphicx, color, enumerate, textcomp, colonequals, fullpage, url, float}
+\usepackage[backref]{hyperref}
+\usepackage[alphabetic,backrefs,lite]{amsrefs}
+\usepackage{harpoon}
+
+\input xy
+\xyoption{all}
+
+
+\makeatletter
+\newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
+\newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
+\makeatother
+
+
+\newtheorem{thm}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem*{defn}{Definition}
+\newtheorem{corollary}[subsection]{Corollary}
+\newtheorem{lemma}[subsection]{Lemma}
+\newtheorem{claim}[subsection]{Claim}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{fact}{Fact}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{theo}{Theorem}
+
+\newtheorem{remark}[subsection]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{defin}[subsection]{Definition}
+\newtheorem{rmk}[subsection]{Remark}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+\newcommand{\isom}{\cong}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\C}{\mathbb C}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathbb A}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\P}{\mathbb P}
+\newcommand{\kX}{k[x_1, \dots, x_n]}
+\newcommand{\Cl}{{\bf Claim:} }
+\renewcommand{\phi}{\varphi}
+\newcommand{\p}{\mathfrak{p}}
+%\newcommand{\Sch}{\mathfrak{S}\mathrm{ch}}
+%\newcommand{\Rg}{\mathfrak{R}\mathrm{ings}}
+%\newcommand{\Spec}{\mathrm{Spec}\ }
+\newcommand{\mcal}{\mathcal}
+
+\DeclareMathOperator{\Art}{Art}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\wt}{wt}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\cha}{char}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\sw}{sw}
+\DeclareMathOperator{\PGL}{PGL_2}
+
+\renewcommand{\setminus}{-}
+
+\newcommand{\harpoon}{\overset{\rightharpoonup}}
+
+\pagestyle{plain}
+
+%% This bit allows you to either specify only the files which you wish to
+%% process, or `all' to process all files which you \include.
+%% Krishna Sethuraman (1990).
+
+%\typein [\files]{Enter file names to process, (chap1,chap2 ...), or `all' to
+%process all files:}
+%\def\all{all}
+%\ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
+
+\begin{document}
+
+\include{cover}
+% Some departments (e.g. 5) require an additional signature page.  See
+% signature.tex for more information and uncomment the following line if
+% applicable.
+% \include{signature}
+\pagestyle{plain}
+\include{contents}
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\appendix
+%\include{appa}
+%\include{appb}
+\include{biblio}
+\end{document}
+

@@ -1,0 +1,399 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Background and Definitions}\label{chapdef}
+Let $R$ be a Henselian discrete valuation ring with algebraically closed residue field $k$. Let $\cha k = p$. (The hypothesis on $R$ and $k$ hold for the rest of this thesis, unless explicitly stated otherwise. The residue characteristic $p$ is allowed to be $0$.) Let $K$ be the fraction field of $R$. Let $\overline{K}$ denote a separable closure of $K$. Let $\nu \colon K \rightarrow \Z \cup \{\infty\}$ denote the discrete valuation on $K$. A {\color{blue}{\textsf{$K$-variety}}} is a separated scheme of finite type over $K$. A {\color{blue}{\textsf{nice $K$-curve}}} $C$ is a smooth, projective, geometrically integral $K$-variety of dimension $1$. Let $S = \Spec R$. In this thesis, a {\color{blue}{\textsf{hyperelliptic curve}}} defined over $K$ will be a nice $K$-curve which admits a degree $2$ map to $\P^1$ that is defined over $K$. 
+
+\begin{rmk}
+ The most general definition for a hyperelliptic curve would be a nice $K$-curve that admits a degree $2$ map onto its image under the canonical morphism, and for which the canonical image is a nice genus $0$ curve (that may or may not have rational points). However, we restrict our attention to those hyperelliptic curves whose canonical image has a $K$-point.
+\end{rmk}
+
+
+% In Section~\ref{tamagawa} we assume that $R$ is a Henselian discrete valuation ring with perfect residue field (not necessarily algebraically closed). In this case, let $\overline{k}$ denote the algebraic closure of $k$ and let $R^{\textup{st}}$ denote the strict Henselization of the Henselian ring $R$.
+
+\section{Weierstrass models and minimal discriminants}\label{defmindisc}
+Let $A$ be a commutative ring. Let $g$ be a positive integer $\geq 1$. Let $A[x,y,z]$ be the weighted polynomial ring over $A$  which assigns weight $1$ to the variables $x$ and $z$, and weight $g+1$ to the variable $y$. Let $\P_A = \Proj A[x,y,z]$. Given a polynomial $f(x,y) \in A[x,y]$, its {\color{blue}{\textsf{homogenization}}} $F(x,y,z)$ is given by $F(x,y,z) = z^{\deg f} f(x/z,y/z^{g+1})$, where $\deg f$ is the degree of $f$ in the weighted polynomial ring $A[x,y,z]$.
+
+\begin{defin}
+ An {\color{blue}{\textsf{integral Weierstrass equation}}} for a hyperelliptic $K$-curve $C$ of genus $g$ is an equation $f(x,y) = y^2+q(x)y-p(x) = 0$, where $q(x) \in R[x]$ is of degree $\leq g+1$ and $p(x) \in R[x]$ is of degree $\leq 2g+2$, such that the locus cut out by the homogenization of $f$ in $\P_K$ is isomorphic to $C$.
+\end{defin}
+
+\begin{defin}
+ The {\color{blue}{\textsf{discriminant of the hyperelliptic equation}}} $f(x,y) = y^2+q(x)y-p(x) = 0$ equals $\nu(2^{-4(g+1)} \disc (4P(x,z)+Q(x,z)^2))$ where $P$ and $Q$ are the homogenizations of $p$ and $q$ respectively, and $\disc$ is the discriminant associated to a binary form of degree $2g+2$ (See \cite[Chapter~12]{gkz} for the definition of discriminants of binary forms).
+\end{defin}
+
+\begin{defin}\label{mindisdef}
+ A {\color{blue}{\textsf{minimal Weierstrass equation}}} for a hyperelliptic $K$-curve $C$ is an integral Weierstrass equation for $C$ whose associated discriminant is minimal amongst all integral Weierstrass equations of $C$. The discriminant associated to a minimal Weierstrass equation is called the {\color{blue}{\textsf{minimal discriminant}}}.
+\end{defin}
+
+\begin{prop}\label{algo}
+ Let $C$ be a hyperelliptic $K$-curve of genus $g$. 
+ \begin{enumerate}[\upshape(a)]
+  \item The curve $C$ has an integral Weierstrass equation.  
+  \item There exists an algorithm to compute a minimal Weierstrass equation and the minimal discriminant of $C$. 
+  \item If $C$ has a $K$-rational Weierstrass point, then we can find a minimal Weierstrass equation of the form $y^2+q(x)y=p(x)$, where $\deg q \leq g$ and $p(x)$ is a monic polynomial of degree $2g+1$. 
+  \item If $\cha k \neq 2$, the curve $C$ has a minimal Weierstrass equation of the form $y^2=p(x)$.
+ \end{enumerate} 
+\end{prop}
+\begin{proof}
+ We first prove that there exists an integral Weierstrass equation for $C$. Let $\pi \colon C \rightarrow \P^1_K$ be the canonical morphism. Let $D = \pi^*((\infty))$. Using the Riemann-Roch theorem and the fact that $C$ is hyperelliptic, we can pick elements $x,y \in K(C)$ such that $\{1,x\}$ is a basis for $H^0(C,D)$ and $\{1,x,\ldots,x^{g+1},y\}$ is a basis for $H^0(C,(g+1)D)$. Since 
+ \begin{itemize}
+  \item $\{1,x,\ldots,x^{2g+1},y,yx,\ldots,yx^{g}\}$ is a basis for $H^0(C,(2g+1)D)$, 
+  \item $\{1,x,\ldots,x^{2g+2},y,yx,\ldots,yx^{g+1},y^2\}$ span $H^0(C,(2g+2)D)$,
+  \item $\dim H^0(C,(2g+2)D) = 3g+5$, and,
+  \item $y \notin K(x) \cap H^0(C,(g+1)D)$,
+ \end{itemize}
+ there has to be a nontrivial relation $y^2+(b_0x^{g+1}+b_2x^g+\ldots+b_{2(g+1)})y = a_0x^{2g+2}+a_2x^{2g+1}+\ldots+a_{4g+4}$ for some set $\{b_0,b_2,\ldots,b_{2g+2},a_0,a_2,a_{4g+4}\} \subset K$. Replacing $x$ by $u x$ replaces $b_0$ by $u^{g+1}b_0$ and $a_0$ by $u^{2g+2}a_0$, so by making $u$ sufficiently divisible by the uniformizer, we get a nontrivial relation where $b_0,a_0 \in R$. Now if we simultaneously replace $x$ by $u^{-2}x$ and $y$ by $u^{-2(g+1)}y$, we get a relation where each $b_i$ is replaced by $u^ib_i$ and each $a_i$ is replaced by $u^ia_i$. By making $u$ sufficiently divisible by the uniformizer of $R$, we can make all the $b_i$ and all the $a_i$ integral, and this gives us an integral Weierstrass equation. This proves (a).
+ 
+ The map $C \rightarrow \P^1$ given by the rational function $x$ agrees with the map $\pi$ up to a change of coordinates on $\P^1_K$ that leaves the point $\infty$ fixed. For a fixed divisor $D$, any other Weierstrass equation that has $\pi^*((\infty)) = D$ is given by a change of coordinates that replaces $x$ by $u^{2}x+r$ and $y$ by $u^{2g+2}y+s(x)$. One can check that this operation subtracts $(4g+4) \nu(u)$ from the discriminant of the original integral Weierstrass equation; in particular, the new discriminant is independent of $s(x)$. This tells us that if we are interested in computing the minimal discriminant, we can restrict our attention to those changes of coordinates on $C$ that arise from a change of coordinates on the underlying $\P^1_K$.
+ 
+ In order to give an algorithm that computes the minimal discriminant, it therefore suffices to understand how conjugation by $PGL_2(K)$ affects the order of vanishing of the resultant of a pair of homogeneous polynomials $[F(x,z):G(x,z)]$ (in our case $F = 2^{-4(g+1)} \disc (4P(x,z)+Q(x,z)^2)$ and $G$ equals the derivative of $f$ homogenized to a degree $2g+2$ polynomial). In \cite[Theorem~0.1]{rumely}, Rumely explains how this $PGL_2(K)$ conjugation action on the valuation of the resultant can be viewed as an action on the type $II$ points of the Berkovich projective line. In fact, he proves that this action gives rise to a continuous function $\P^1_{\textup{Berk}} \rightarrow [0,\infty]$, that is piecewise linear and {\textit{convex upwards}} on each finite line segment of $\P^1_{\textup{Berk}}$. The fact that this function is convex upwards on each finite line segment allows us to search for the minimum discriminant over any field $K$ with finite residue field by a `steepest descent' algorithm on the 
+Bruhat-Tits tree over $K$ (i.e. starting at any point on the Bruhat-Tits tree, we move in a direction that decreases the discriminant until we reach a local minimum) --- this is explained in detail in \cite[Algorithm~B]{rumely}. Since the function is convex upwards on each finite segment, the local minimum coincides with the global minimum. Since the minimal discriminant is unchanged when we make unramified extensions of $K$, we can compute the minimal discriminant over the local field where the coefficients of $F$ and $G$ are defined. We refer the reader to \cite{rumely} for more details. This finishes the proof of (b).
+ 
+ If $C$ has a $K$-rational Weierstrass point $P$, then we can repeat the argument in part(a) with the linear systems attached to the divisors $2P,(2g+1)P,(4g+1)P,(4g+2)P$ in place of the linear systems attached to the divisors $D,(g+1)D,(2g+1)D,(2g+2)D$ respectively. We can also show that there is a minimal Weierstrass equation of the form $y^2+q(x)y=p(x)$ where $\deg q \leq g, \deg p \leq 2g+1$ (we omit the proof; it involves performing a change of coordinates using an element of $PGL_2(R)$ to move $P$ to be the unique point above $\infty$, and arguing that such a transformation leaves the discriminant unchanged). Finally, since $2g+1$ and $2$ are coprime, we can simultaneously scale the variables $x$ and $y$ by suitable units to make the coefficients of $y^2$ and $x^{2g+1}$ equal; dividing through by this common coefficient makes $p$ monic and integral and leaves the discriminant unchanged. This proves (c).
+ 
+ If $\cha k \neq 2$, and $y^2-q(x)y=p(x)$ is a minimal Weierstrass equation for $C$, one can check that $y'^2 = (y - (q(x)/2))^2 = 4^{-1}(4p(x)+q(x)^2)$ is also a minimal Weierstrass equation for $C$. This proves (d).
+\end{proof}
+
+\begin{prop}\label{goodreddisccrit}
+ A hyperelliptic $K$-curve $C$ has good reduction if and only if its minimal discriminant is $0$. 
+\end{prop}
+\begin{proof}
+ If $C$ has a minimal Weierstrass equation with discriminant $0$, then the subscheme defined by the corresponding homogenized equation in $\P_R$ is smooth and proper over $S$ and has generic fiber $C$. This proves one direction of the implication.
+ 
+ For the other direction, let $\mathcal{C}$ be a smooth, proper $S$-scheme with generic fiber $C$. Let $\pi \colon C \rightarrow \P^1_K$ be the canonical morphism. Let $D = \pi^*((\infty))$ and let $\overline{D}$ denote the flat closure of $D$ in $\mathcal{C}$. We repeat the argument in Theorem~\ref{algo}[(a)] with $\overline{D}$ in place of $D$. We have to be slightly careful, since the global sections of multiples of $\overline{D}$ are now $R$-modules, and not $K$-vector spaces. However, all the $R$-modules involved are free --- they are torsion-free from being subsheaves of the function field of $C$, and are free since $R$ is a discrete valuation ring. So all the arguments in Theorem~\ref{algo}[(a)] go through, as long as we carefully choose free $R$-module generators in place of $K$-bases. The relation $y^2+q(x)y=p(x)$ that we obtain can be used to define a closed subscheme $\mathcal{C}'$ of $\P_R$. By our choice of module generators, the special fiber $\mathcal{C}'_s$ is isomorphic to $\mathcal{C}_s$ 
+and is therefore smooth over $\Spec k$. The Jacobian criterion for smoothness \cite[Chapter~1, Section~5]{hartshorne} applied to the hypersurface $\mathcal{C}'_s$ in $\P_k$ tells us that $2^{-4(g+1)} \disc (4\overline{p}(x,z)+\overline{q}(x,z)^2)$ must be nonzero (here we use $\overline{p}$ and $\overline{q}$ to denote the reductions of $p$ and $q$ modulo the maximal ideal of $R$), and therefore the discriminant of the corresponding Weierstrass equation must be $0$.
+\end{proof}
+
+\section{Regular models}
+\begin{defin}
+A {\color{blue}{\textsf{regular model}}} for a nice curve $C$ is a proper, flat, regular $S$-scheme $X$, whose generic fiber  is isomorphic to $C$. A {\color{blue}{\textsf{regular $S$-curve}}} $X$ is an $S$-scheme that is a regular model for its generic fiber.  
+\end{defin}
+
+For a regular $S$-curve $X$, let $X_s \colonequals X \times_R k$ denote its special fiber, let $X_\eta \colonequals X \times_R K$ denote its generic fiber and let $X_{\overline{\eta}} \colonequals X \times_R \overline{K}$ denote its geometric generic fiber. For a scheme $X$, let $X_{\mathrm{red}}$ denote the associated reduced subscheme. 
+
+\begin{defin}
+A regular model $X$ is a {\color{blue}{\textsf{simple normal crossings ({\textup{snc}}) model}}} if the irreducible components of $(X_s)_{\mathrm{red}}$ are smooth, and $(X_s)_{\mathrm{red}}$ has at worst nodal singularities. 
+\end{defin}
+
+Let $C$ be a nice $K$-curve of genus $g \geq 1$. 
+\begin{defin}
+The {\color{blue}{\textsf{minimal proper regular model}}} of $C$ is a regular model that has no exceptional curves.
+\end{defin}
+The minimal proper regular model of $C$ is unique up to unique isomorphism; any other regular model can be obtained from the minimal proper regular model by a sequence of blow-ups \cite[Theorem 4.4]{lich}.
+
+\section{Artin conductor}\label{defcond}
+Let $G \colonequals \Gal (\overline{K}/K)$ be the absolute Galois group of $K$. The group $G$ admits a filtration
+$ G = G_0 \supset G_1 \supset G_2 \supset \ldots $
+%\[ 0 \rightarrow P \rightarrow I \rightarrow \Gal(\overline{k}/k) \simeq \hat{\Z} \rightarrow 0, \]
+where $G_1$ is the maximal pro-$p$ subgroup of $G$, called the {\textit{wild inertia}} subgroup and $G_i$ is the {\textit{$i^{\textup{th}}$ ramification subgroup}} (in the lower numbering). Let $\rho \colon G \rightarrow \Aut(V)$ be a continuous finite dimensional $\Q_\ell$-representation of $G$ for some prime $l \neq p$, where $G$ has the profinite topology and $\Aut(V)$ has the $\ell$-adic topology. The restriction of $\rho$ to $G_1$ factors via a finite quotient $\pi \colon G_1 \rightarrow G_1'$ (essentially due to the fact that the only continuous homomorphism from a pro-$p$ group to a pro-$\ell$ group is trivial). For any subspace $W \subset V$, let $\codim W$ denote the codimension of $W$. For any $i \geq 0$, let $V^{G_i}$ denote the subspace of $V$ consisting of elements fixed pointwise by every element of $G_i$. For a finite set $S$, let $|S|$ denote the cardinality of $S$. The {\color{blue}{\textsf{tame conductor}}} $\epsilon$ of the representation $V$ is given by 
+\[ \epsilon = \codim V^G,  \]
+and the {\color{blue}{\textsf{Swan conductor}}} $\delta$ of $V$ is given by
+\[ \delta = \sum_{i \geq 1} \frac{|\pi(G_i)|}{|\pi(G_0)|} \codim V^{G_i} .\]
+The {\color{blue}{\textsf{conductor}}} $f$ of the representation $V$ is given by 
+\[ f = \epsilon + \delta = \codim V^G + \sum_{i \geq 1} \frac{|\pi(G_i)|}{|\pi(G_0)|} \codim V^{G_i} . \]
+
+Let $X$ be a regular $S$-curve. Fix $\ell \neq p$. For any curve $C$ over an algebraically closed field of $\cha \neq \ell$ , the {\textit{$\ell$-adic Euler-Poincar\'{e} characteristic}} $\chi(C)$ of $C$ is given by
+\[ \chi(C) = \sum_{i=0}^2 (-1)^i \dim H^i_{\acute{e}t}(C,\Q_\ell) .\]
+Since $X_\eta$ is defined over $K$, the group $G$ acts on $H^1_{\acute{e}t}(X_{\overline{\eta}},\Q_{\ell})$ by functoriality. Let $\delta$ be the Swan conductor of this representation. 
+
+\begin{defin}
+The {\color{blue}{\textsf{Artin conductor}}} $\Art(X)$ of the regular model $X$ is given by
+\[ -\Art(X) = \chi(X_s) - \chi(X_{\overline{\eta}}) + \delta .\] 
+\end{defin}
+
+Let $f$ be the conductor of the $G$-representation $H^1(X_{\overline{\eta}},\Q_{\ell})$. The Artin conductor can also be reexpressed in terms of the conductor $f$ and the number of irreducible components of the special fiber of $X_s$, which we denote $n(X_s)$.
+
+\begin{lemma}\cite[Proposition 1]{liup}\label{artcondfor}
+$-\Art(X/S) = n(X_s)-1+f .$
+\end{lemma}
+
+\begin{defin}
+Let $C$ be a nice curve of genus $g \geq 1$ and let $X$ be its minimal proper regular model. The {\color{blue}{\textsf{Artin conductor of}} $C$} $\Art(C)$ equals $\Art(X)$.
+\end{defin}
+
+\section{Deligne discriminant}\label{defdeldisc}
+In \cite[Theorem~5.10]{mumford}, Mumford established various relations amongst line bundles on the coarse moduli space $\mathcal{M}_g$ of smooth curves of genus $g$ (in fact, he even proved an extension of these relations to the Deligne-Mumford compactification $\overline{\mathcal{M}_g}$). Pulling back one of Mumford's relations along an arbitrary morphism $T \rightarrow \mathcal{M}_g$ gives rise{\footnote{What we actually need is a similar relation on the moduli {\textit{stack}}, and this is proved in an unpublished letter of Deligne \cite[Proposition]{deligne}. In his letter, Deligne comments that this only makes a difference in genus $\leq 2$, since the Picard group of the moduli stack has no torsion when $g \geq 3$.}} to the following proposition. 
+\begin{thm}\label{mumiso}\cite[Proposition]{deligne}
+ Let $f \colon Y \rightarrow T$ be any proper smooth morphism over an arbitrary base $T$, all of whose fibers are nice curves. Let $\omega_{Y/T}$ denote the relative dualizing sheaf of the morphism $f$. Then, there exists a canonical isomorphism (unique up to sign) of sheaves
+ \[ \Delta \colon \det (Rf_* (\omega_{Y/T}^{\otimes 2})) \rightarrow \det (Rf_* \omega_{Y/T})^{\otimes 13} .\]
+\end{thm}
+
+Using the above proposition, we can attach an integer discriminant to an arbitrary regular $S$-curve. Let $X$ be a regular $S$-curve, and let $\omega_{X/S}$ be the relative dualizing sheaf of $f \colon X \rightarrow S$. The canonical isomorphism in Theorem~\ref{mumiso} gives rise to a canonical nonzero rational section $\Delta = \Delta_{X/S}$ of the invertible $\O_S$ module
+ \[ \Hom_{\O_S}(\det (Rf_* (\omega_{X/S}^{\otimes 2})) , \det (Rf_* \omega_{X/S})^{\otimes 13}) .\] 
+ The order of vanishing of a rational section $m$ of an invertible $\O_S$ module $M$ is the unique integer $s$ such that $m R = \pi^s M$, where $\pi$ is a uniformizer of $R$.
+\begin{defin}
+ The {\color{blue}{\textsf{Deligne discriminant}}} $\ord \Delta_X$ of $X/S$ is the order of vanishing of the canonical rational section $\Delta$ of $\Hom_{\O_S}(\det (Rf_* (\omega_{X/S}^{\otimes 2})) , \det (Rf_* \omega_{X/S})^{\otimes 13})$.
+\end{defin}
+
+\section{Relation between the Deligne discriminant and the Artin conductor}
+\begin{thm}\cite[Theorem 1]{saito2}
+ Let $X$ be a regular $S$-curve. Then \[-\Art(X/S) = \ord \Delta_X.\]
+\end{thm}
+
+\section{Some graph theory}
+A {\color{blue}{\textsf{directed weighted multigraph}}} $G$ is a quadruple $(V(G),\overrightharp{E}(G),p,w)$, where 
+\begin{itemize}
+ \item $V(G)$ is a finite set called the {\color{blue}{\textsf{vertices}}} of $G$, 
+ \item $\overrightharp{E}(G)$ is a finite set called the {\color{blue}{\textsf{directed edges}}} of $G$, 
+ \item $p \colon \overrightharp{E}(G) \rightarrow V(G) \times V(G)$ is a map of sets, and,
+ \item $w \colon \overrightharp{E}(G) \rightarrow \N$ is a nonnegative integer valued function called the {\color{blue}{\textsf{weight function}}}. 
+\end{itemize}
+For $e \in \overrightharp{E}(G)$, if $p(e) = (u,v)$, then the {\color{blue}{\textsf{head}}} of $e$, denoted $e^+$ equals $v$ and the {\color{blue}{\textsf{tail}}} of $e$, denoted $e^-$, equals $u$. Let $a,b \in V(G)$. A {\color{blue}{\textsf{directed path}}} in $G$ from $a$ to $b$ is an ordered set of vertices $\{v_0, \ldots,v_k \}$ and an ordered set of directed edges $e_1, \ldots, e_k$ such that $v_0 = a, v_k = b$ and $e_i^- = v_{i-1}, e_i^+ = v_i$ for all $i \in [1,k]$. If $v \in V(G)$, we will also use $v$ to denote the corresponding basis element of $\Z^{V(G)}$. Let $v \in V(G)$. A {\color{blue}{\textsf{spanning tree directed into $v$}}} is a directed weighted multigraph $T = (V(T),\overrightharp{E}(T),p',w')$ such that 
+\begin{itemize}
+ \item $V(T) = V(G)$, 
+ \item $\overrightharp{E}(T) \subset \overrightharp{E}(G)$, and $p'(e) = p(e), w'(e) = w(e)$ for every $e \in \overrightharp{E}(T)$, and,
+ \item for every $u \in V(T)$, there is a unique directed path in $T$ from $u$ to $v$.
+\end{itemize}
+The {\color{blue}{\textsf{weight of a spanning tree}}} equals the product of the weights of all the directed edges in the spanning tree. The vertex $v$ is called a {\color{blue}{\textsf{sink}}} if there is a directed path in $G$ from $u$ to $v$ for every vertex $u \in V(G)$. Assume that $v$ is a sink, let $W = V(G) \setminus \{v\}$ and let $\Delta_{\mathrm{red}} \colon \Z^{W} \rightarrow \Z^{W}$ be the linear map defined by 
+\[u \mapsto \left(\sum_{\substack{e \in \overrightharp{E}(G) \\ e^- = u}} w(e)\right)u - \sum_{t \in W}\left(\sum_{\substack{e \in \overrightharp{E}(G) \\ e^+=t, e^- = u}} w(e)\right) t \]
+for every $u \in W$. The map $\Delta_{\mathrm{red}}$ is called the {\color{blue}{\textsf{reduced Laplacian}}} of $G$ with respect to the sink $v$.
+
+We recall the statement of the Matrix-Tree theorem for directed weighted multigraphs.
+\begin{thm}\label{matrixtree}\cite[Theorem~2.5]{ppw}
+ The determinant of the reduced Laplacian of $G$ is equal to the sum of the weights of all its directed spanning trees into the sink.
+\end{thm}
+
+For any set $V$, the symmetric group on two letters $S_2$ acts on $V \times V$ by interchanging the two factors, and we denote by $\pi_V \colon V \times V \rightarrow [V \times V]/S_2$ the corresponding map from $V \times V$ to the space of orbits of $V \times V$ under this action. A {\color{blue}{\textsf{graph}}} is a quadruple $(V(G),E(G),p,w)$, where 
+\begin{itemize}
+ \item $V(G)$ is a finite set, called the set of {\color{blue}{\textsf{vertices}}} of $G$, 
+ \item $E(G)$ is a finite set, called the set of {\color{blue}{\textsf{edges}}} of $G$,
+ \item $p \colon E(G) \rightarrow [V(G) \times V(G)]/S_2$ is a map of sets, and,
+ \item $w \colon E(G) \rightarrow \N$ is a nonnegative integer valued function called the {\color{blue}{\textsf{weight function}}}. 
+\end{itemize}
+Every graph $G = (V,E,p,w)$ has an associated directed weighted multigraph $\overrightharp{G} = (\overrightharp{V},\overrightharp{E},\overrightharp{p},\overrightharp{w})$ uniquely characterized (up to isomorphism) by the following properties: 
+% defined as follows: $\overrightharp{G}$ has the same underlying set of vertices, but every edge $e \in E(G)$ is replaced by a pair of directed edges $\{e_1,e_2\}$, such that
+\begin{itemize}
+ \item $\overrightharp{V} = V$,
+ \item there exists a map $\tilde{\pi} \colon \overrightharp{E} \rightarrow E$ such that the following diagrams commute
+ \begin{equation*}
+ {\xymatrix{
+\overrightharp{E} \ar[dd]_{\tilde{\pi}} \ar[rr]^{\overrightharp{p}} & & V \times V \ar[dd]^{\pi_V} & & & \overrightharp{E} \ar[dd]_{\tilde{\pi}} \ar[rr]^{\overrightharp{w}} & & \N \ar[dd]^{\mathrm{Id}_{\N}} \\
+& & & & & & & \\
+E \ar[rr]^{p} & & [V \times V]/S_2 & & & E \ar[rr]^{w} & & \N, 
+}}
+\end{equation*} 
+ \item $\# \tilde{\pi}^{-1}(e) = 2$ for every $e \in E$, and,
+ \item if $\tilde{\pi}^{-1}(e) = \{e_1,e_2\}$, then $e_1^- = e_2^+$ and $e_1^+ = e_2^-$.
+\end{itemize}
+The set of {\color{blue}{\textsf{endpoints}}} of an edge $e$, denoted $D(e)$, is the set $\{e_1^+,e_1^-\}$ for any $e_1 \in \tilde{\pi}^{-1}(e)$ (this set is well-defined by the last condition listed above). A {\color{blue}{\textsf{subgraph}}} of a graph $G = (V(G),E(G),p,w_G)$ is a graph $H = (V(H),E(H),p_H,w_H)$ such that $V(H) \subset V(G), E(H) \subset E(G), p_H = p|_{E(H)}$ and $w_G|_{E(H)} = w_H$. A {\color{blue}{\textsf{spanning tree}}} $T$ of a graph $G$ is a subgraph of $G$ such that $V(T) = V(G)$, and $E(T) = \tilde{\pi}(\overrightharp{E}(T'))$, where $T'$ is a spanning tree directed into some vertex $v$ for the associated directed weighted multigraph $\overrightharp{G}$. For a graph $G$, let $S(G)$ denote the set of spanning trees of $G$. For a vertex $v$ in a graph $G$, let $N_G(v)$ denote the set of {\color{blue}{\textsf{neighbours}}} of $v$ in $G$, that is, the set of vertices $v'$ such that there exists an edge $e \in E(G)$ whose set of endpoints $D(e)$ equals $\{v,v'\}$. Let $\Delta \colon \
+Z^{V(G)} \rightarrow \Z^{V(G)}$ be the linear map defined by 
+\[u \mapsto (\sum_{e \in E(G), u \in D(e)} w(e))u - \sum_{t \in V(G)}(\sum_{e \in E(G), D(e) = \{t,u\}} w(e)) t \]
+for every $u \in V(G)$. Let $L$ denote the matrix of $\Delta$ with respect to the standard basis of $\Z^{V(G)}$. The map $\Delta$ is called the {\color{blue}{\textsf{Laplacian}}} of $G$. For a vertex $v \in V(G)$, let $L_v$ denote the absolute value of the minor of the element $L_{vv}$ of $L$. We recall the statement of the Matrix-Tree theorem for graphs.
+\begin{thm}\label{matrixtreeforgraphs}\cite[Theorem~1]{cs}
+ For any vertex $v$, the number $L_v$ equals the sum of the weights of all the spanning trees of the graph $G$.
+\end{thm}
+
+A subgraph $C$ of a graph $G$ is called a {\color{blue}{\textsf{cycle}}} if $\# V(C) = \# E(C)$ and if there exists an ordering $(v_1,v_2,\ldots,v_k)$ of $V(C)$, and an ordering $(e_1,e_2,\ldots,e_k)$ of $E(C)$ such that $D(e_i) = \{v_i,v_{i+1} \}$ if $1 \leq i < k$ and $D(e_k) = \{v_1,v_k\}$. A vertex $v$ belongs to a cycle $C$ if $v \in V(C)$; similarly, an edge $e$ belongs to a cycle $C$ if $e \in E(C)$. A subgraph $C$ of a graph $G$ is called a {\color{blue}{\textsf{chain}}} if $\#V(C) = \#E(C)+1$ and if there exists an ordering $(v_1,v_2,\ldots,v_k)$ of $V(C)$, and an ordering $(e_1,e_2,\ldots,e_{k-1})$ of $E(C)$  such that $D(e_i) = \{v_i,v_{i+1}\}$ for all $i$; the {\color{blue}{\textsf{length}}} of the chain is $k$. An edge $e$ in a graph $G$ is called a {\color{blue}{\textsf{connecting edge}}} if there exists a partition $\{V_1,V_2\}$ of the set $V(G)$ such that the only edge with one endpoint in $V_1$ and another endpoint in $V_2$ is $e$. A {\color{blue}{\textsf{connecting chain}}} is a chain $C$ 
+such that every edge of $C$ is a connecting edge. {\color{blue}{\textsf{Contracting a connecting chain}}} $C$ in a graph $G = (V,E,p,w)$ gives rise to another graph $G' = (V',E',p',w')$ defined as follows. Let $\sim$ be the equivalence relation on $V$ that identifies all the vertices in $V(C)$, and let $V/ \sim$ denote the equivalence classes. Then $V' \colonequals V/\sim, E' \colonequals E \setminus E(C), w' = w|_{E'}$ and the map $p'$ is the composition of $p$ with the natural quotient map from $[V \times V]/S_2$ to $[V' \times V']/S_2$.
+
+\section{N\'{e}ron models}\label{defneron}
+In this section, we relax the hypothesis and let $R$ be any discrete valuation ring with perfect residue field. Let $K$ be the fraction field of $R$. Let $S = \Spec R$. Let $\mathcal{A}$ be the N\'{e}ron model of an abelian variety $A$ defined over $K$. It is characterized by the following universal property: it is the unique smooth $S$-group scheme such that for every smooth $S$-scheme $T$, we have a natural isomorphism $\mathcal{A}(T) \simeq A(T \times_S K)$ that is functorial in $T$. Much of the book~\cite{blr} is devoted to the construction of the N\'{e}ron model. 
+
+The N\'{e}ron model $\mathcal{A}$ is proper over $S$ if and only if the abelian variety $A$ has good reduction. In general, the special fiber of $\mathcal{A}_k$ might not be proper, or even connected. The special fiber $\mathcal{A}_s$ fits in the following exact sequence 
+\[ 0 \rightarrow \mathcal{A}_s^0 \rightarrow \mathcal{A}_s \rightarrow \Phi \rightarrow 0,  \]
+where $\mathcal{A}_s^0$ is a connected group scheme and $\Phi$ is a finite \'{e}tale group scheme, called the {\color{blue}{\textsf{component group scheme}}}. The {\color{blue}{\textsf{component group}}} is the set of points of the component group scheme over an algebraic closure, and the {\color{blue}{\textsf{Tamagawa number}}} is the size of the group $\Phi(k)$. 
+
+The connected group scheme $\mathcal{A}_s^0$ has a Chevalley decomposition:
+\[ 0 \rightarrow U \times T \rightarrow \mathcal{A}_s^0 \rightarrow B \rightarrow 0. \]
+In the exact sequence above, $U$ is a unipotent algebraic group, $T$ is a torus and $B$ is an abelian variety. The dimensions of these groups are called the unipotent rank, toric rank and abelian rank respectively. 
+
+\section{Component groups and Tamagawa numbers of Jacobians}\label{defcompgrp}
+
+\subsection{The Artin--Winters type of a regular $S$-curve}
+Let $X$ be a regular $S$-curve. Let $X_s = \sum_{i \in I} r_i E_i$. Here the $E_i$ are the (reduced) irreducible components of $X_s$ and $r_i$ is the multiplicity of $E_i$ in $X_s$ for every $i \in I$. Let $K$ be a relative canonical divisor for $X \rightarrow S$.
+\begin{defin}\cite[Definition~1.2]{artwin}
+ The type $T$ of $X$ consists of the integers
+ \[ \# I; (E_i.E_j); (E_i.K); r_i \ \ \ \ \textup{for all } i,j \in I .\]
+\end{defin}
+
+The genus $g$ of $X_\eta$ satisfies $2g-2 = X_s.K = \sum_{i \in I} r_i E_i.K$.
+
+\begin{defin}
+  A collection of integers 
+  \[ n; m_{ij}; k_i; r_i \ \ \ \ i,j = 1,\ldots,n \]
+  is called a {\color{blue}{\textsf{type}}} if
+  \begin{itemize}
+   \item $n \geq 1$,
+   \item $r_i \geq 1$ for every $i$,
+   \item $m_{ij} = m_{ji} \geq 0$ if $i \neq j$, and for every $i$, we have $\sum_{j} r_j m_{ij} = 0$, and,
+   \item for every $i$, we have $m_{ii} + k_i \in \{-2,0,2,4,\ldots\}$.
+  \end{itemize}
+\end{defin}
+
+\begin{defin}
+ The {\color{blue}{\textsf{genus}}} of a type $T$ equals $1 + \tfrac{1}{2} \sum r_i k_i$.
+\end{defin}
+
+\begin{defin}
+ An {\color{blue}{\textsf{exceptional curve}}} in a type $T$ is an index $i$ such that $k_i = -1$ and $m_{ii} = -1$.
+\end{defin}
+
+Let $T$ be a type containing three indices, say $i = 1,2,n$ having the following properties:
+\begin{align*}
+ r_1 &= r_2 = r_n \\
+ k_n &= 0 \\
+ m_{ni} &= \begin{cases} 1 &{\textup{if }} i=1,2 \\ -2 &{\textup{if }} i=n \\ 0 &{\textup{if }} i \notin \{1,2,n\}. \end{cases}
+\end{align*}
+The {\color{blue}{\textsf{contraction}}} of $n$ in the type $T$ is the new type $T'$ obtained by omitting the index $n$, increasing $m_{12}$ and $m_{21}$ by $1$, and leaving all the other data unchanged (one can easily check that $T'$ is a type, i.e., it satisfies the conditions above). Conversely, given the type $T'$, we can build a new type $T$ by reversing the process above; we say that the type $T$ is a {\color{blue}{\textsf{decontraction}}} of $T'$.
+
+\begin{defin}
+ Two types $T_1$ and $T_2$ are similar if one can be obtained from the other by a series of contractions and decontractions.
+\end{defin}
+
+\begin{thm}\cite[Theorem~1.6]{artwin}\label{finsim}
+ Let $g \geq 2$ be an integer. There are finitely many similarity classes of types $T$ of genus $g$ without exceptional curves.
+\end{thm}
+
+\begin{thm}\cite[Corollary~4.3]{winters}\label{typeexistence}
+ Let $T = (n; m_{ij}; k_i; r_i)$ be a type. Let $k$ be an algebraically closed field. Assume that $\cha k$ does not divide any $r_i$. Then there exists a proper map $f \colon X \rightarrow Y$ from a nice $k$-surface onto a nice $k$-curve with a closed fiber $Z = \sum_{i=1}^n r_i E_i$ having this type, having nonsingular components $E_i$ having normal crossings.
+\end{thm}
+
+\subsection{Component groups}
+The description of the component group given in \cite[Section 9.6]{blr} holds in generality slightly greater than what we assume later in this thesis. In this section, we state the more general results. We relax the assumption on $R$ and assume that it is a strictly Henselian discrete valuation ring (which implies only that the residue field $k$ is separably closed, and not necessarily algebraically closed). Let $X$ be a proper, flat, regular curve over $S$ whose generic fiber is geometrically irreducible. Let $\overline{k}$ be an algebraic closure of the residue field $k$ of $R$. Let $(X_i)_{i \in I}$ be the (reduced) irreducible components of $X_k$. For each $i \in I$, let $\eta_i$ be the generic point corresponding to $X_i$. Let $\overline{X_k} \colonequals X_k \times_k \overline{k}$ and let $\overline{X_i} \colonequals X_i \times_k \overline{k}$. For each $i$, let $\overline{\eta_i} \in \overline{X_k}$ be the unique point lying over $\eta_i$. 
+\begin{defin}
+ The {\color{blue}{\textsf{multiplicity $d_i$ of $X_i$ in $X_k$}}} is the length of the Artinian local ring $\O_{X_k,\eta_i}$. The {\color{blue}{\textsf{geometric multiplicity $\delta_i$ of $X_i$ in $X_k$}}} is the length of the Artinian local ring $\O_{\overline{X_k},\overline{\eta_i}}$. The {\color{blue}{\textsf{geometric multiplicity $e_i$ of $X_i$}}} is the length of the Artinian local ring $\O_{\overline{X_i},\overline{\eta_i}}$.
+\end{defin}
+If $k$ is algebraically closed, then $e_i = 1$ for all $i \in I$.
+
+Let $J$ be the Jacobian of $X_K$ and let $\mathcal{J}$ be its N\'{e}ron model. 
+\begin{thm}\cite[Section~9.6, Theorem~1]{blr}\label{mainthmblr}
+ Assume either that $k$ is algebraically closed, or that $X$ admits a section. Consider the homomorphisms
+ \[ \Z^I \xrightarrow{\alpha} \Z^I \xrightarrow{\beta} \Z, \]
+ where $\alpha$ is given by the modified intersection matrix $(e_i^{-1}X_i.X_j)_{i,j \in I}$ and $\beta((a_i)_{i \in I}) \colonequals \sum a_i \delta_i$. Then $\im \alpha \subset \ker \beta$. The component group of $\mathcal{J}_s$ is canonically isomorphic to the quotient $\ker \beta/\im \alpha$.
+\end{thm}
+
+\begin{corollary}\cite[Section~9.6, Corollary~4]{blr}\label{maincorblr}
+ Assume that all the $e_i$ are equal to $1$. Let $\# I = r$ and let $d = \gcd(d_i \colon i \in I)$. Let $M$ be the $r \times r$ matrix corresponding to the intersection pairing, i.e., the matrix with entries $(X_i.X_j)_{i,j \in I}$. Fix $i$ and $j$. Let $a_{ij}^*$ be the $(r-1) \times (r-1)$ minor corresponding to the index $(i,j)$. Then
+ \[ \# \Phi(\overline{k}) = \frac{d^2}{d_i d_j} a_{ij}^* . \]
+\end{corollary}
+
+\subsection{Tamagawa numbers}\label{introtam}
+In this section, we do not assume that the residue field $k$ is separably closed. Assume that $k$ is perfect and let $\overline{k}$ denote an algebraic closure of $k$. Let $R^{\textup{st}}$ denote the strict Henselization of $R$. Let $X$ be a regular $S$-curve. Let $\Phi$ denote the component group scheme of the N\'{e}ron model of the Jacobian of $X_K$. The main objective of this section is to recall the description of $\Phi(k)$ given by Bosch and Liu in \cite{bosliu}. 
+
+Let $X^{\textup{st}} = X \times_R R^{\textup{st}}$. Let $V$ denote the set of (reduced) irreducible components of $X^{\textup{st}}_s$, and let $\widetilde{V}$ denote the set of (reduced) irreducible components of $X_s$. The set $\widetilde{V}$ can also naturally be identified with the space of orbits for the natural action of $\Gal(\overline{k}/k)$ on $V$. This gives rise to a quotient map $\pi \colon V \rightarrow \widetilde{V}$, where we map $v \in V$ to the corresponding orbit. For every $\tilde{v} \in \widetilde{V}$, let $|\tilde{v}|$ denote the size of the orbit corresponding to $\tilde{v}$ and let $m_{\tilde{v}}$ denote the multiplicity of $\tilde{v}$ in $X_s$. Let $m_v$ denote the multiplicity of $v$ in $X^{\textup{st}}_s$. Consider the complex
+\[ \Z^{\widetilde{V}} \xrightarrow{\alpha} \Z^{\widetilde{V}} \xrightarrow{\beta} \Z ,\]
+where the maps $\alpha$ and $\beta$ are defined as follows.
+
+For any $v,w \in V$, let $v.w$ denote the intersection number of the components $v$ and $w$ in $X^{\textup{st}}_s$. In order to define $\alpha$, we need to fix some $w \in \pi^{-1}(\tilde{w})$ for every $\tilde{w} \in \widetilde{V}$. The map below is well-defined, independent of this choice, since the Galois action permutes the various $w \in \pi^{-1}(\tilde{w})$ and preserves intersection numbers.
+\[
+\alpha ((b_{\tilde{v}})_{\tilde{v} \in \widetilde{V}}) = \left( \sum_{\tilde{v} \in \widetilde{V}} b_{\tilde{v}} \sum_{v \in \pi^{-1}(\tilde{v})} v.w \right)_{\tilde{w} \in \widetilde{V}} .
+\]
+\[ \beta((b_{\tilde{v}})_{\tilde{v} \in \widetilde{V}}) = \sum_{\tilde{v} \in \widetilde{V}} b_{\tilde{v}} m_{\tilde{v}} |\tilde{v}| \]
+Using the following two facts, one can check that the composition of the two maps above is zero: (i) for any $\tilde{v} \in \widetilde{V}$ and for any $v \in \pi^{-1}(\tilde{v})$, we have $m_v = m_{\tilde{v}}$, and,  (ii) the intersection number of any vertical divisor of $X^{\textup{st}}_s$ with the special fiber $X^{\textup{st}}_s$ is $0$.
+
+\begin{thm}\label{galcoh}\cite[Theorem~1.17, Corollary~1.17]{bosliu}
+Assume that $k$ is perfect and that $\Gal (\overline{k}/k)$ is procyclic. Let $X$ be a regular $S$-curve. Let $g$ be the genus of $X_K$. Let $m = \gcd(m_{\tilde{v}} \ | \ {\tilde{v} \in \widetilde{V}})$ and let $\tilde{m} = \gcd(m_{\tilde{v}}|\tilde{v}| \ : \ {\tilde{v} \in \widetilde{V}})$. Let $\Phi$ denote the \'{e}tale $k$-group scheme corresponding to the component group of the N\'{e}ron model of the Jacobian of $X_K$ over $S$. Let $q = 1$ if $\tilde{m} | g-1 $ and $q=2$ otherwise. Then $qm$ divides $\tilde{m}$ and there exists an exact sequence
+\begin{equation}\label{tam}
+ 0 \rightarrow \ker{\beta}/{\im{\alpha}} \rightarrow \Phi(k) \rightarrow (qm \Z)/\tilde{m} \Z \rightarrow 0 .
+\end{equation} 
+\end{thm}
+\begin{rmk}
+The theorem above follows from an analysis of the long exact sequence in Galois cohomology associated to the short exact sequence of $\Gal(\overline{k}/k)$-modules
+\[ 0 \rightarrow \im{\overline{\alpha}} \rightarrow \ker{\overline{\beta}} \rightarrow \Phi(\overline{k}) \rightarrow 0, \]
+where the maps $\overline{\alpha}$ and $\overline{\beta}$ are the $\alpha$ and $\beta$ that appear in Theorem~\ref{mainthmblr}. 
+\end{rmk}
+
+\section{Hirzebruch--Jung continued fractions}\label{hj}
+Let $n$ and $r$ be positive integers, such that $0 < r < n$ and $\gcd(r,n) = 1$. Let $m_1,m_2$ be positive integers such that $\gcd(m_1,n) = \gcd(m_2,n)=1$ and $rm_2+m_1 = 0 \bmod n$. The Hirzebruch--Jung continued fraction expansion $[b_1,b_2,\ldots,b_{\lambda}]_{\textup{HJ}}$ of $n/r$ is given by
+\begin{equation*}
+  \frac{n}{r} = b_1 - \cfrac{1}{b_2 
+          - \cfrac{1}{ \cdots - \cfrac{1}{b_\lambda} } },
+\end{equation*}
+where $\lambda$ and $b_i$ are positive integers with $b_i \geq 2$. 
+
+If $\lambda=1$, let $\mu_1 = (m_1+m_2)/n$. Otherwise, let $\mu_i$ be the unique solution to the system of equations
+\[ \left[ \begin{array}{cccccccc}
+ b_1 & -1  &     &    &  & & & \\
+ -1  & b_2 & -1  &    &  & & & \\
+     & -1  & b_3 & -1 &  & & & \\
+     &     &     &    & \ddots & & & \\
+     &     &     &    &  & -1 & b_{\lambda-1} & -1 \\
+     &     &     &    &  &    & -1 & b_{\lambda} 
+\end{array} \right] \left[ \begin{array}{c} \mu_1 \\ \mu_2 \\ \vdots \\ \vdots \\ \mu_{\lambda-1} \\ \mu_{\lambda} \end{array} \right] = \left[ \begin{array}{c} m_2 \\ 0 \\ \vdots \\ \vdots \\ 0 \\ m_1 \end{array} \right] .\]
+We call $(\mu_1,\mu_2,\ldots,\mu_{\lambda})$ the multiplicity vector associated to the tuple $(n,r,m_2,m_1)$. For the proof of existence and uniqueness, see \cite[Corollary~2.4.3]{ces}.
+
+\begin{lemma}\label{curious}
+ \[ \frac{n}{m_1m_2} = \frac{1}{m_2 \mu_1} + \frac{1}{\mu_1 \mu_2} + \cdots + \frac{1}{\mu_{\lambda-1} \mu_\lambda} + \frac{1}{\mu_\lambda m_1} .\]
+\end{lemma}
+\begin{proof}
+ We will prove this by induction on the length $\lambda$ of the continued fraction expansion of $n/r$. Since $\gcd(n,r) = 1$, if $\lambda = 1$, it follows that $r=1, b_1=n$ and $\mu_1 = (m_1+m_2)/n$, so
+ \[ \frac{1}{m_2 \mu_1} + \frac{1}{\mu_1 m_1} = \frac{m_1+m_2}{\mu_1 m_1 m_2} = \frac{n}{m_1 m_2} .\]
+ Now assume $\lambda > 1$. Let $n=b_1 r - r'$. We have $rm_2+m_1 = n \mu_1$ by \cite[Corollary~2.4.3]{ces}. One can then check that the continued fraction expansion of $r/r'$ is given by $[b_2,\ldots,b_{\lambda}]_{\textup{HJ}}$. 
+ We also have 
+ \begin{align*}
+ m_1+r'\mu_1 &= m_1+(b_1r-n)\mu_1 \\
+ &= m_1+b_1r\mu_1-n\mu_1 \\
+ &= m_1+b_1r\mu_1-m_1-rm_2 \\
+ &= r(b_1\mu_1-m_2) \\
+ &= r\mu_2. 
+ \end{align*}
+ One can check (using the uniqueness statement in Section~\ref{hj}) that the multiplicity vector associated to the tuple $(r,r',\mu_1,m_1)$ equals $(\mu_2,\ldots,\mu_{\lambda})$. The induction hypothesis applied to the tuple $(r,r',m_1,\mu_1)$ (in place of the original $(n,r,m_1,m_2)$) then tells us that
+ \[ \frac{r}{m_1 \mu_1} = \frac{1}{\mu_1 \mu_2} + \ldots + \frac{1}{\mu_{\lambda-1} \mu_\lambda} + \frac{1}{\mu_{\lambda} m_1} .\]
+ Now,
+ \begin{align*}
+  \frac{n}{m_1 m_2} &= \frac{m_1+rm_2}{\mu_1 m_1 m_2} \\
+  &= \frac{1}{m_2 \mu_1} + \frac{r}{m_1 \mu_1} \\
+  &= \frac{1}{m_2 \mu_1} + \frac{1}{\mu_1 \mu_2} + \cdots + \frac{1}{\mu_{\lambda-1} \mu_\lambda} + \frac{1}{\mu_\lambda m_1} . \qedhere
+ \end{align*}
+\end{proof}
+
+\section{Behaviour of regular models under tame extensions}\label{deftameext}
+Let $R$ and $K$ be as in the beginning of this chapter. Let $X$ be a $\textup{snc}$ model of a nice $K$-curve of genus $g \geq 1$. Let $\N'$ be the set of positive integers not divisible by the characteristic of $k$. For $d \in \N'$, let $K(d)$ denote the unique tamely ramified extension of $K$ of degree $d$ and let $R(d)$ denote its ring of integers. Let $S(d) = \Spec R(d)$. Let $X_d$ denote the normalization of $X \times_S S(d)$. Let $X(d)$ denote the minimal desingularization of $X_d$. In \cite[Chapter 3]{halnic}, Halle and Nicaise prove that $X(d)$ is again a $\textup{snc}$ model and describe its special fiber in terms of the special fiber of $X$. In this section, we recall the necessary results from their book that we will need in Chapter~\ref{papertwo}. 
+
+Let $X_s = \sum_{i \in I} N_i E_i$, where the $E_i$ are the (reduced) irreducible components of $X_s$ and $N_i$ is the multiplicity of $E_i$ in $X_s$. For each $i \in I$, let $E_i^\circ = E_i \setminus \bigcup_{j \neq i} E_j$. For any subset $S \subset X_s$, we let $\overline{S}$ denote its Zariski closure in $X_s$.
+
+\begin{prop}\label{comodel}\cite[Chapter~3, Proposition~1.3.2]{halnic}
+Let $d \in \N'$.
+\begin{enumerate}[(i)]
+ \item For each irreducible component $E_i$ of $X_s$, the scheme $F_i \colonequals X_d \times_X E_i$ is a disjoint union of smooth irreducible curves $F_{ij}$. The multiplicity $N_i'$ of each component $F_{ij}$ in $(X_d)_s$ is given by $N_i' = N_i/\gcd(d,N_i)$, and the morphism $X_d \times_X E_i^\circ \rightarrow E_i^\circ$ is a Galois cover of degree $\gcd(d,N_i)$.
+ \item If $E_i$ is a rational curve such that the set-theoretic intersection $E_i \cap \overline{(X_s \setminus E_i)}$ consists of precisely one (respectively two) point(s), i.e., $\sum_{j \neq i} E_j.E_i \in \{1,2\}$, then each $F_{ij}$ is a rational curve such that $F_{ij} \cap \overline{((X_d)_s \setminus F_{ij})}$ consists of precisely one (respectively two) point(s). In both cases, the number of connected components of $F_i$ is equal to $n_i \colonequals \gcd(N_i,N_a,d)$ where $a$ is any element of $I \setminus \{i\}$ such that $E_a$ intersects $E_i$. In particular, the $\gcd$ does not depend on the choice of $a$.
+ \item Each nonregular point of $X_d$ is an intersection point of two distinct irreducible components of the special fiber. Let $x \in (X_d)_s$ be a point that belongs to the intersection of two distinct irreducible components $F$ and $F'$ which dominate irreducible components $E$ and $E'$ of $X_s$ respectively. Let $N$ and $N'$ be the multiplicities of $E$ and $E'$ in $X_s$ respectively. Then the special fiber of the minimal desingularization $Z$ of the local germ $\Spec \O_{X_d,x}$ is a divisor with strict normal crossings whose combinatorial data (i.e. multiplicities of components and their intersection numbers; see Proposition~\ref{combdata} below) depend only on $N,N'$ and $d$. Moreover, each exceptional component of $Z_s$ is a rational curve that meets the other irreducible components of $Z_s$ in precisely two points.
+\end{enumerate}
+In particular, the $S(d)$-scheme $X(d)$ is a $\textup{snc}$ model of $X \times_K K(d)$.  
+\end{prop}
+
+\begin{prop}\label{combdata}\cite[Chapter~3, Proposition~4.2.5]{halnic}
+ Retain the notation in Proposition~\ref{comodel}(iii). The special fiber of the minimal desingularization $Z$ of the local germ $\Spec \O_{X_d,x}$ consists of a chain of $(-2)$ curves that connect the strict transforms of $F$ and $F'$. The multiplicities of the $(-2)$ curves in the chain can be computed by the following procedure. Let $g = \gcd(N,N',d), h = \gcd(N,d), h' = \gcd(N',d), n = N/h, n' = N'/{h'}, d'=(dg)/{hh'}$. Let $r$ be the unique solution to the equation $rn+n' = 0 \mod d'$ such that $0 < r < d'$. Let $[b_1,b_2,\ldots,b_{\lambda}]_{\textup{HJ}}$ be the Hirzebruch--Jung continued fraction expansion of $d'/r$. Let $(\mu_1,\ldots,\mu_{\lambda})$ be as in Section~\ref{hj}, with $(d',r,n,n')$ in place of $(n,r,m_2,m_1)$. Then there are $\lambda$ components in the chain joining the strict transform of $F$ and the strict transform of $F'$ in $\mathcal{C}(d)_s$. Their multiplicities in order are $\{\mu_1,\mu_2,\ldots,\mu_{\lambda}\}$.
+\end{prop}
+
+\begin{defin}\cite[Chapter~3, Definition~2.2.2]{halnic}
+ A component $\Gamma$ of $X_s$ is {\color{blue}{\textsf{principal}}} if 
+ \begin{itemize}
+  \item either the genus of $\Gamma$ is nonzero, or,
+  \item $\Gamma \setminus \Gamma^\circ$ contains at least $3$ points.
+ \end{itemize}
+\end{defin}
+
+Since we assumed that the genus of $X_\eta$ is nonzero, it follows that there exists a minimal {\textup{snc}} model $X_{\mathrm{min}}$ of $X_\eta$ \cite[Chapter~9, Proposition~3.36]{liu}. 
+
+\begin{defin}\cite[Chapter~3, Definition~2.2.3]{halnic}
+ Let $I$ denote the set of principal components of $X$. The {\color{blue}{\textsf{stabilization index}}} of $X$, denoted $e(X)$, is defined by
+ \[ e(X) \colonequals \underset{\Gamma \in I}{\lcm}\ m_{\Gamma} .\]
+ Also, the stabilization index $e(X_\eta)$ of $X_\eta$ is defined by
+ \[ e(X_\eta) \colonequals e(X_{\mathrm{min}}) .\]
+\end{defin}
+
+\begin{lemma}\label{dgraphbaseext}\cite[Chapter~3, Lemma~2.3.2]{halnic}
+ Assume either that the genus of $X_\eta$ is $\geq 2$, or that $X_\eta$ is a genus $1$ curve with a rational point, or that $X_\eta$ is a genus $1$ curve whose Jacobian has additive/good reduction. 
+%  that $X_\eta$ is not a genus $1$ curve satisfying both of the following two conditions: {\textup{(i)}} $X_\eta(K) = \emptyset$, and, {\textup{(ii)}} the Jacobian of $X_\eta$ has multiplicative reduction. 
+ Let $d \in \N'$ be an element that is prime to $e(X)$. 
+ 
+ Then for every (reduced) irreducible component $E_i$ of $X_s$, the $k$-scheme $F_i = X_d \times_X E_i$ is smooth and irreducible. Let $N_i'$ be the multiplicity of $F_i$ in $(X_d)_s$. Then $N_i' = N_i/\gcd(d,N_i)$, and $F_i \rightarrow E_i$ is a ramified tame Galois cover of degree $\gcd(d,N_i)$.
+ 
+ If $E_i$ is principal, or $E_i$ is a rational curve such that $E_i.\sum_{j \neq i}E_j = 1$, then $F_i \rightarrow E_i$ is an isomorphism and $N_i' = N_i$. If $E_i$ is a rational curve such that $E_i.\sum_{j \neq i}E_j = 2$, then $F_i \simeq \P^1_k$ and $F_i \rightarrow E_i$ is either an isomorphism, or ramified over the two points of $E_i \setminus E_i^\circ$. Moreover, if $i$ and $j$ are distinct elements of $I$, then over any point of $E_i \cap E_j$ lies exactly one point of $F_i \cap F_j$.
+\end{lemma}
+
+\section{N\'{e}ron component series}\label{defcompser}
+Let $X$ be a regular $S$-curve. Let $\mathcal{A}$ denote the N\'{e}ron model of the Jacobian of $X_K$. For $d \in \N'$, let $\mathcal{A}(d)$ denote the N\'{e}ron model of the Jacobian of $X \times_K K(d)$. Since the construction of the N\'{e}ron model does not commute with base extension, it is natural to ask how much $\mathcal{A} \times_R R(d)$ and $\mathcal{A}(d)$ differ. The behaviour of the size of the component group under tame extensions is recorded in a precise fashion by the {\color{blue}{\textsf{N\'{e}ron component series}}}
+\[ \sum_{d \in \N'} |\Phi(\mathcal{A}(d))|T^d . \]
+One of the key results in \cite{halnic} is a proof of the rationality of the N\'{e}ron component series \cite[Chapter~3, Theorem~3.1.5]{halnic}. The main ingredient in the proof of this result is the following theorem.
+\begin{thm}\cite[Chapter~3, Proposition~3.1.1]{halnic}
+ Let $t$ denote the toric rank of $\mathcal{A}$. Let $K'/K$ be a finite tame extension of $K$ whose degree d is prime to $e(X_\eta)$. Then
+ \[ |\Phi(A \times_K K')| = d^t |\Phi(A)| .\]
+\end{thm}
+The proof given by Halle and Nicaise involves a reduction to the equicharacteristic case. We provide an alternate proof of this result in Section~\ref{altprfcomp}.
+

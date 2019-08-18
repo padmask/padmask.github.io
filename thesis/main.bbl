@@ -1,0 +1,477 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
+  \def\cprime{$'$}
+% \bib, bibdiv, biblist are defined by the amsrefs package.
+\begin{bibdiv}
+\begin{biblist}
+
+\bib{artwin}{article}{
+      author={Artin, M.},
+      author={Winters, G.},
+       title={Degenerate fibres and stable reduction of curves},
+        date={1971},
+        ISSN={0040-9383},
+     journal={Topology},
+      volume={10},
+       pages={373\ndash 383},
+      review={\MR{0476756}},
+}
+
+\bib{bosliu}{article}{
+      author={Bosch, Siegfried},
+      author={Liu, Qing},
+       title={Rational points of the group of components of a {N}\'eron model},
+        date={1999},
+        ISSN={0025-2611},
+     journal={Manuscripta Math.},
+      volume={98},
+      number={3},
+       pages={275\ndash 293},
+         url={http://dx.doi.org/10.1007/s002290050140},
+      review={\MR{1717533}},
+}
+
+\bib{bloch}{article}{
+      author={Bloch, Spencer},
+       title={de {R}ham cohomology and conductors of curves},
+        date={1987},
+        ISSN={0012-7094},
+     journal={Duke Math. J.},
+      volume={54},
+      number={2},
+       pages={295\ndash 308},
+         url={http://dx.doi.org/10.1215/S0012-7094-87-05417-2},
+      review={\MR{899399}},
+}
+
+\bib{blr}{book}{
+      author={Bosch, Siegfried},
+      author={L{\"u}tkebohmert, Werner},
+      author={Raynaud, Michel},
+       title={N\'eron models},
+      series={Ergebnisse der Mathematik und ihrer Grenzgebiete (3) [Results in
+  Mathematics and Related Areas (3)]},
+   publisher={Springer-Verlag, Berlin},
+        date={1990},
+      volume={21},
+        ISBN={3-540-50587-3},
+         url={http://dx.doi.org/10.1007/978-3-642-51438-8},
+      review={\MR{1045822}},
+}
+
+\bib{bano}{article}{
+      author={Baker, Matthew},
+      author={Norine, Serguei},
+       title={Riemann-{R}och and {A}bel-{J}acobi theory on a finite graph},
+        date={2007},
+        ISSN={0001-8708},
+     journal={Adv. Math.},
+      volume={215},
+      number={2},
+       pages={766\ndash 788},
+         url={http://dx.doi.org/10.1016/j.aim.2007.04.012},
+      review={\MR{2355607}},
+}
+
+\bib{ces}{article}{
+      author={Conrad, Brian},
+      author={Edixhoven, Bas},
+      author={Stein, William},
+       title={{$J_1(p)$} has connected fibers},
+        date={2003},
+        ISSN={1431-0635},
+     journal={Doc. Math.},
+      volume={8},
+       pages={331\ndash 408 (electronic)},
+      review={\MR{2029169}},
+}
+
+\bib{cs}{article}{
+      author={Chebotarev, P.~Yu.},
+      author={Shamis, E.~V.},
+       title={A matrix forest theorem and the measurement of relations in small
+  social groups},
+        date={1997},
+        ISSN={0005-2310},
+     journal={Avtomat. i Telemekh.},
+      number={9},
+       pages={125\ndash 137},
+      review={\MR{1609615}},
+}
+
+\bib{deligne}{article}{
+      author={Deligne, Pierre},
+       title={Le discriminant d'une courbe},
+        date={1985-06-20},
+     journal={Appendice 3 Lettre Quillen},
+}
+
+\bib{gkz}{book}{
+      author={Gelfand, I.~M.},
+      author={Kapranov, M.~M.},
+      author={Zelevinsky, A.~V.},
+       title={Discriminants, resultants and multidimensional determinants},
+      series={Modern Birkh\"auser Classics},
+   publisher={Birkh\"auser Boston, Inc., Boston, MA},
+        date={2008},
+        ISBN={978-0-8176-4770-4},
+        note={Reprint of the 1994 edition},
+      review={\MR{2394437}},
+}
+
+\bib{halnic}{article}{
+      author={Halle, Lars~Halvard},
+      author={Nicaise, Johannes},
+       title={N\'eron models and base change},
+        date={2012-09-25},
+        note={http://arxiv.org/abs/1209.5556},
+}
+
+\bib{kausz}{article}{
+      author={Kausz, Ivan},
+       title={A discriminant and an upper bound for {$\omega^2$} for
+  hyperelliptic arithmetic surfaces},
+        date={1999},
+        ISSN={0010-437X},
+     journal={Compositio Math.},
+      volume={115},
+      number={1},
+       pages={37\ndash 69},
+         url={http://dx.doi.org/10.1023/A:1000580901251},
+      review={\MR{1671741}},
+}
+
+\bib{katosaito}{article}{
+      author={Kato, Kazuya},
+      author={Saito, Takeshi},
+       title={On the conductor formula of bloch},
+        date={2004},
+        ISSN={0073-8301},
+     journal={Publ. Math. Inst. Hautes \'Etudes Sci.},
+      number={100},
+       pages={5\ndash 151},
+      review={\MR{2102698}},
+}
+
+\bib{lich}{article}{
+      author={Lichtenbaum, Stephen},
+       title={Curves over discrete valuation rings},
+        date={1968},
+        ISSN={0002-9327},
+     journal={Amer. J. Math.},
+      volume={90},
+       pages={380\ndash 405},
+      review={\MR{0230724}},
+}
+
+\bib{liu}{book}{
+      author={Liu, Qing},
+       title={Algebraic geometry and arithmetic curves},
+      series={Oxford Graduate Texts in Mathematics},
+   publisher={Oxford University Press, Oxford},
+        date={2002},
+      volume={6},
+        ISBN={0-19-850284-2},
+        note={Translated from the French by Reinie Ern{\'e}, Oxford Science
+  Publications},
+      review={\MR{1917232}},
+}
+
+\bib{liup}{article}{
+      author={Liu, Qing},
+       title={Conducteur et discriminant minimal de courbes de genre {$2$}},
+        date={1994},
+        ISSN={0010-437X},
+     journal={Compositio Math.},
+      volume={94},
+      number={1},
+       pages={51\ndash 79},
+         url={http://www.numdam.org/item?id=CM_1994__94_1_51_0},
+      review={\MR{1302311}},
+}
+
+\bib{liuminmod}{article}{
+      author={Liu, Qing},
+       title={Mod\`eles entiers des courbes hyperelliptiques sur un corps de
+  valuation discr\`ete},
+        date={1996},
+        ISSN={0002-9947},
+     journal={Trans. Amer. Math. Soc.},
+      volume={348},
+      number={11},
+       pages={4577\ndash 4610},
+         url={http://dx.doi.org/10.1090/S0002-9947-96-01684-4},
+      review={\MR{1363944}},
+}
+
+\bib{liulor}{article}{
+      author={Liu, Qing},
+      author={Lorenzini, Dino},
+       title={Models of curves and finite covers},
+        date={1999},
+        ISSN={0010-437X},
+     journal={Compositio Math.},
+      volume={118},
+      number={1},
+       pages={61\ndash 102},
+         url={http://dx.doi.org/10.1023/A:1001141725199},
+      review={\MR{1705977}},
+}
+
+\bib{llr}{article}{
+      author={Liu, Qing},
+      author={Lorenzini, Dino},
+      author={Raynaud, Michel},
+       title={N\'eron models, lie algebras, and reduction of curves of genus
+  one},
+        date={2004},
+        ISSN={0020-9910},
+     journal={Invent. Math.},
+      volume={157},
+      number={3},
+       pages={455\ndash 518},
+      review={\MR{2092767}},
+}
+
+\bib{lor1}{article}{
+      author={Lorenzini, Dino~J.},
+       title={Arithmetical graphs},
+        date={1989},
+        ISSN={0025-5831},
+     journal={Math. Ann.},
+      volume={285},
+      number={3},
+       pages={481\ndash 501},
+         url={http://dx.doi.org/10.1007/BF01455069},
+      review={\MR{1019714}},
+}
+
+\bib{lor}{article}{
+      author={Lorenzini, Dino~J.},
+       title={Groups of components of {N}\'eron models of {J}acobians},
+        date={1990},
+        ISSN={0010-437X},
+     journal={Compositio Math.},
+      volume={73},
+      number={2},
+       pages={145\ndash 160},
+         url={http://www.numdam.org/item?id=CM_1990__73_2_145_0},
+      review={\MR{1046735}},
+}
+
+\bib{lorpotgood}{article}{
+      author={Lorenzini, Dino~J.},
+       title={Jacobians with potentially good {$l$}-reduction},
+        date={1992},
+        ISSN={0075-4102},
+     journal={J. Reine Angew. Math.},
+      volume={430},
+       pages={151\ndash 177},
+         url={http://dx.doi.org/10.1515/crll.1992.430.151},
+      review={\MR{1172912}},
+}
+
+\bib{lor2}{article}{
+      author={Lorenzini, Dino~J.},
+       title={On the group of components of a {N}\'eron model},
+        date={1993},
+        ISSN={0075-4102},
+     journal={J. Reine Angew. Math.},
+      volume={445},
+       pages={109\ndash 160},
+         url={http://dx.doi.org/10.1515/crll.1993.445.109},
+      review={\MR{1244970}},
+}
+
+\bib{maugeais}{article}{
+      author={Maugeais, Sylvain},
+       title={Rel\`evement des rev\^etements {$p$}-cycliques des courbes
+  rationnelles semi-stables},
+        date={2003},
+        ISSN={0025-5831},
+     journal={Math. Ann.},
+      volume={327},
+      number={2},
+       pages={365\ndash 393},
+         url={http://dx.doi.org/10.1007/s00208-003-0458-1},
+      review={\MR{2015076}},
+}
+
+\bib{mazur}{article}{
+      author={Mazur, B.},
+       title={Modular curves and the {E}isenstein ideal},
+        date={1977},
+        ISSN={0073-8301},
+     journal={Inst. Hautes \'Etudes Sci. Publ. Math.},
+      number={47},
+       pages={33\ndash 186 (1978)},
+         url={http://www.numdam.org/item?id=PMIHES_1977__47__33_0},
+      review={\MR{488287}},
+}
+
+\bib{mumford}{article}{
+      author={Mumford, David},
+       title={Stability of projective varieties},
+        date={1977},
+        ISSN={0013-8584},
+     journal={Enseignement Math. (2)},
+      volume={23},
+      number={1-2},
+       pages={39\ndash 110},
+      review={\MR{0450272}},
+}
+
+\bib{oda}{article}{
+      author={Oda, Takayuki},
+       title={A note on ramification of the {G}alois representation on the
+  fundamental group of an algebraic curve. {II}},
+        date={1995},
+        ISSN={0022-314X},
+     journal={J. Number Theory},
+      volume={53},
+      number={2},
+       pages={342\ndash 355},
+         url={http://dx.doi.org/10.1006/jnth.1995.1095},
+      review={\MR{1348768}},
+}
+
+\bib{ogg}{article}{
+      author={Ogg, A.~P.},
+       title={Elliptic curves and wild ramification},
+        date={1967},
+        ISSN={0002-9327},
+     journal={Amer. J. Math.},
+      volume={89},
+       pages={1\ndash 21},
+      review={\MR{0207694}},
+}
+
+\bib{ppw}{incollection}{
+      author={Perkinson, David},
+      author={Perlman, Jacob},
+      author={Wilmes, John},
+       title={Primer for the algebraic geometry of sandpiles},
+        date={2013},
+   booktitle={Tropical and non-{A}rchimedean geometry},
+      series={Contemp. Math.},
+      volume={605},
+   publisher={Amer. Math. Soc., Providence, RI},
+       pages={211\ndash 256},
+         url={http://dx.doi.org/10.1090/conm/605/12117},
+      review={\MR{3204273}},
+}
+
+\bib{poonenstoll}{article}{
+      author={Poonen, Bjorn},
+      author={Stoll, Michael},
+       title={Most odd degree hyperelliptic curves have only one rational
+  point},
+        date={2014},
+        ISSN={0003-486X},
+     journal={Ann. of Math. (2)},
+      volume={180},
+      number={3},
+       pages={1137\ndash 1166},
+         url={http://dx.doi.org/10.4007/annals.2014.180.3.7},
+      review={\MR{3245014}},
+}
+
+\bib{rumely}{article}{
+      author={Rumely, Robert},
+       title={The minimal resultant locus},
+        date={2015},
+        ISSN={0065-1036},
+     journal={Acta Arith.},
+      volume={169},
+      number={3},
+       pages={251\ndash 290},
+         url={http://dx.doi.org/10.4064/aa169-3-3},
+      review={\MR{3361223}},
+}
+
+\bib{saito1}{article}{
+      author={Saito, Takeshi},
+       title={Vanishing cycles and geometry of curves over a discrete valuation
+  ring},
+        date={1987},
+        ISSN={0002-9327},
+     journal={Amer. J. Math.},
+      volume={109},
+      number={6},
+       pages={1043\ndash 1085},
+         url={http://dx.doi.org/10.2307/2374585},
+      review={\MR{919003}},
+}
+
+\bib{saito2}{article}{
+      author={Saito, Takeshi},
+       title={Conductor, discriminant, and the {N}oether formula of arithmetic
+  surfaces},
+        date={1988},
+        ISSN={0012-7094},
+     journal={Duke Math. J.},
+      volume={57},
+      number={1},
+       pages={151\ndash 173},
+         url={http://dx.doi.org/10.1215/S0012-7094-88-05706-7},
+      review={\MR{952229}},
+}
+
+\bib{serrelinrep}{book}{
+      author={Serre, Jean-Pierre},
+       title={Linear representations of finite groups},
+   publisher={Springer-Verlag, New York-Heidelberg},
+        ISBN={0-387-90190-6},
+        note={Translated from the second French edition by Leonard L. Scott;
+  Graduate Texts in Mathematics, Vol. 42},
+      review={\MR{0450380}},
+}
+
+\bib{babysil}{book}{
+      author={Silverman, Joseph~H.},
+       title={The arithmetic of elliptic curves},
+     edition={Second},
+      series={Graduate Texts in Mathematics},
+   publisher={Springer, Dordrecht},
+        date={2009},
+      volume={106},
+        ISBN={978-0-387-09493-9},
+         url={http://dx.doi.org/10.1007/978-0-387-09494-6},
+      review={\MR{2514094}},
+}
+
+\bib{serretate}{article}{
+      author={Serre, Jean-Pierre},
+      author={Tate, John},
+       title={Good reduction of abelian varieties},
+        date={1968},
+        ISSN={0003-486X},
+     journal={Ann. of Math. (2)},
+      volume={88},
+       pages={492\ndash 517},
+      review={\MR{0236190}},
+}
+
+\bib{ueno}{incollection}{
+      author={Ueno, Kenji},
+       title={Discriminants of curves of genus {$2$} and arithmetic surfaces},
+        date={1988},
+   booktitle={Algebraic geometry and commutative algebra, {V}ol.\ {II}},
+   publisher={Kinokuniya, Tokyo},
+       pages={749\ndash 770},
+      review={\MR{977781}},
+}
+
+\bib{winters}{article}{
+      author={Winters, Gayn~B.},
+       title={On the existence of certain families of curves},
+        date={1974},
+        ISSN={0002-9327},
+     journal={Amer. J. Math.},
+      volume={96},
+       pages={215\ndash 228},
+      review={\MR{0357406}},
+}
+
+\end{biblist}
+\end{bibdiv}

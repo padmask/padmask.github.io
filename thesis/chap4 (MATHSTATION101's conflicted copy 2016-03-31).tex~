@@ -1,0 +1,355 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Computing sizes of component groups and Tamagawa numbers of Jacobians}\label{papertwo}
+
+% \section{Notation and Definitions}\label{notation}
+% \subsection{Models of curves}
+% Let $R$ be a Henselian discrete valuation ring with algebraically closed residue field $k$. Let $K$ be the fraction field of $R$. A {\color{blue}{\textsf{$K$-variety}}} is a separated scheme of finite type over $K$. A {\color{blue}{\textsf{nice $K$-curve}}} $C$ is a smooth, projective, geometrically integral $K$-variety of dimension $1$. Let $S = \Spec R$. A {\color{blue}{\textsf{regular model}}} for a nice curve $C$ is a proper, flat, regular $S$-scheme $X$, whose generic fiber  is isomorphic to $C$. A {\color{blue}{\textsf{regular $S$-curve}}} $X$ is an $S$-scheme that is a regular model for its generic fiber. For a regular $S$-curve $X$, let $X_s$ denote its special fiber, let $X_\eta$ denote its generic fiber and let $X_{\overline{\eta}}$ denote its geometric generic fiber. For a scheme $X$, let $X_{\mathrm{red}}$ denote the associated reduced subscheme. A regular model $X$ is a {\color{blue}{\textsf{simple normal crossings ({\textup{snc}}) model}}} if the irreducible components of $(X_s)_{\mathrm{red}}$ are smooth, and $(X_s)_{\mathrm{red}}$ has at worst nodal singularities. 
+% 
+% In Section~\ref{tamagawa} we assume that $R$ is a Henselian discrete valuation ring with perfect residue field (not necessarily algebraically closed). In this case, let $\overline{k}$ denote the algebraic closure of $k$ and let $R^{\textup{st}}$ denote the strict Henselization of the Henselian ring $R$.
+
+% \subsection{Graph theory}
+% A {\color{blue}{\textsf{directed weighted multigraph}}} $G$ is a triple $(V(G),E(G),w)$, where 
+% \begin{itemize}
+%  \item $V(G)$ is a set called the {\color{blue}{\textsf{vertices}}} of $G$, 
+%  \item $E(G)$ is a multiset called the {\color{blue}{\textsf{directed edges}}} of $G$, where each element of $E(G)$ is an ordered pair of elements of $V(G)$, and,
+%  \item $w \colon E(G) \rightarrow \N$ is a non-negative integer valued function called the {\color{blue}{\textsf{weight function}}}. 
+% \end{itemize}
+% If $e \in E(G)$ is of the form $e=(u,v)$, then the {\color{blue}{\textsf{head}}} of $e$, denoted $e^+$ equals $v$ and the {\color{blue}{\textsf{tail}}} of $e$, denoted $e^-$, equals $u$. The {\color{blue}{\textsf{endpoints}}} of $e$, denoted $D(e)$ is the set $\{e^+,e^-\}$. Let $u,v \in V(G)$. A {\color{blue}{\textsf{directed path}}} in $G$ from $u$ to $v$ is an ordered set of directed edges $e_1, \ldots, e_i, \ldots, e_k$ such that $e_1^- = u, e_k^+ = v$ and $e_i^+ = e_{i+1}^-$ for all $i \in [1,k-1]$. If $v \in V(G)$, we will also use $v$ to denote the element $(\delta_{vu})_{u \in V(G)} \in \Z^{V(G)}$. Let $v \in V(G)$. A {\color{blue}{\textsf{spanning tree directed into $v$}}} is a directed weighted multigraph $T = (V(T),E(T),w')$ such that 
+% \begin{itemize}
+%  \item $V(T) = V(G)$, 
+%  \item $E(T) \subset E(G)$ and for every $e \in E(T), w'(e) = w(e)$,
+%  \item for every $u \in V(T)$, there is a unique directed path in $T$ from $u$ to $v$, and,
+%  \item $e^- \neq v$ for every $e \in E(T)$.
+% \end{itemize}
+% The {\color{blue}{\textsf{weight of a spanning tree}}} equals the product of the weights of all the directed edges in the spanning tree. The vertex $v$ is called a {\color{blue}{\textsf{sink}}} if  there is a directed path in $G$ from $u$ to $v$ for every vertex $u \in V(G) \setminus \{v\}$. Assume that $v$ is a sink, let $W = V(G) \setminus \{v\}$ and let $\Delta \colon \Z^{W} \rightarrow \Z^{W}$ be the linear map defined by $u \mapsto (\sum_{e \in E(G), e^- = u} w(e))u - \sum_{t \in W}(\sum_{e \in E(G), e^+=t, e^- = u} w(e)) t$ for every $u \in W$. The map $\Delta$ is called the {\color{blue}{\textsf{reduced Laplacian}}} of $G$ with respect to the sink $v$.
+% 
+% We recall the statement of the Matrix-Tree theorem for directed weighted multigraphs.
+% \begin{thm}\label{matrixtree}\cite[p.5, Th.2.5]{ppw}
+%  The determinant of the reduced Laplacian of $G$ is the sum of the weights of all its directed spanning trees into the sink.
+% \end{thm}
+% 
+% A {\color{blue}{\textsf{graph}}} $G$ is a {\color{blue}{\textsf{directed weighted multigraph}}} such that $E(G)$ is symmetric, that is, there is a bijection $e \mapsto e_{\mathrm{rev}}$ of $E(G)$ such that $e^+ = e_{\mathrm{rev}}^-, e^- = e_{\mathrm{rev}}^+$ and  $w(e) = w(e_{\mathrm{rev}})$ for every $e \in E(G)$. In this case, we replace $E(G)$ by $E(G)/\sim$ (the {\color{blue}{\textsf{edges}}} of the graph $G$) where $\sim$ is the equivalence relation that identifies $e$ with $e_{\mathrm{rev}}$. The weight function descends to equivalence classes. A {\color{blue}{\textsf{subgraph}}} of a graph $G = (V(G),E(G),w_G)$ is a graph $H = (V(H),E(H),w_H)$ such that $V(H) \subset V(G), E(H) \subset E(G)$ and $w_G|_{E(H)} = w_H$. A {\color{blue}{\textsf{spanning tree}}} of a graph $G$ is an equivalence class of directed spanning trees of the underlying directed weighted multigraph, where we declare any two directed spanning trees with the same set of edges as being  equivalent. For a graph $G$, let $S(G)$ denote the set of spanning trees of $G$. For a vertex $v$ in a graph $G$, let $N_G(v)% $ denote the set of {\color{blue}{\textsf{neighbours}}} of $v$ in $G$, that is, the set of vertices $v'$ such that there is an edge between $v$ and $v'$. Let $\Delta \colon \Z^{V(G)} \rightarrow \Z^{V(G)}$ be the linear map defined by $u \mapsto (\sum_{e \in E(G), u \in D(e)} w(e))u - \sum_{t \in W}(\sum_{e \in E(G), D(e) = \{t,u\}} w(e)) t$ for every $u \in V(G)$. Let $L$ denote the matrix of $\Delta$ with respect to the standard basis of $\Z^{V(G)}$. The map $\Delta$ is called the {\color{blue}{\textsf{Laplacian}}} of $G$. For a vertex $v \in V(G)$, let $L_v$ denote the absolute value of the minor of the element $L_{vv}$ of $L$. We recall the statement of the Matrix-Tree theorem for graphs.
+% \begin{thm}\label{matrixtreeforgraphs}\cite[p.3, Th.1]{cs}
+%  For any vertex $v$, the number $L_v$ equals the sum of the weights of all the spanning trees of the graph $G$.
+% \end{thm}
+% 
+% 
+% A {\color{blue}{\textsf{cycle}}} $C$ in a graph $G$ is an ordered set of vertices $V(C) \colonequals \{v_1,v_2,\ldots,v_k\}$ and an ordered set of edges $E(C) \colonequals \{e_1,e_2,\ldots,e_k\}$ such that $D(e_i) = \{v_i,v_{i+1}\}$ for all $i$, where $v_{k+1} = v_1$. A vertex $v$ belongs to a cycle $C$ if $v \in V(C)$; similarly, an edge $e$ belongs to a cycle $C$ if $e \in E(C)$. A {\color{blue}{\textsf{chain}}} $C$ in a graph $G$ is an ordered set of vertices $V(C) \colonequals \{v_1,v_2,\ldots,v_k\}$ and an ordered set of edges $E(C) \colonequals \{e_1,e_2,\ldots,e_{k-1}\}$ such that $D(e_i) = \{v_i,v_{i+1}\}$ for all $i$; the {\color{blue}{\textsf{length}}} of the chain is $k$. A {\color{blue}{\textsf{connecting chain}}} in a graph $G$ is a chain $\{v_1,v_2,\ldots,v_k\}, \{e_1,e_2,\ldots,e_{k-1}\}$ such that for every integer $i \in [1,k-1]$, there exists a partition $\{V_1,V_2\}$ of the set $V(G)$ (depending on $i$), such that the only edge with one endpoint in $V_1$ and another endpoint in $V_2$ is $e_i$. {\color{blue}{\textsf{Contracting a connecting chain}}} $C$ in a graph $G$ gives rise to another graph $G'$, where $V(G') = V(G)/\sim$, where $\sim$ is the equivalence relation that identifies all the vertices in $V(C)$ and $E(G') = E(G) \setminus E(C)$; an edge $e \in E(G) \setminus E(C)$ between the endpoints $D(e) = \{u,v\}$ in $V(G)$ is interpreted as an edge between the corresponding equivalence classes in $V(G')$.
+
+\section{Explicit computation of the sizes of component groups}\label{compgroup}
+\subsection{The weighted dual graph}\label{weightdualgraph}
+Let $C$ be a nice $K$-curve and let $X$ be a proper regular model of the curve $C$ over $R$. The {\color{blue}{\textsf{weighted dual graph}}} $G$ of $X_s$ is defined as follows. The vertices of $G$ are the irreducible components of $X_s$. For each vertex $v$ of $G$, let $\Gamma_v$ denote the corresponding irreducible component of $X_s$ and let $m_v$ denote the multiplicity of $\Gamma_v$ in $X_s$. The number of edges between two distinct vertices $v$ and $w$ equals $\Gamma_v.\Gamma_w$. There are no edges connecting a vertex to itself. For every edge $e$ between the vertices $v$ and $w$, the  weight of $e$, denoted $\wt(e)$, is defined to be $m_v m_w$. 
+
+\begin{rmk}
+ This is the graph obtained by deleting all the loops (i.e., the edges that connect a vertex to itself) in the usual dual graph associated to $X_s$ that is used in algebraic geometry. Including the loops will not alter the proof below, since a graph and the associated loopless graph have the same Laplacian operator.
+\end{rmk}
+
+Let $\Phi$ denote the component group scheme of the N\'{e}ron model of the Jacobian of $C$. In this section, we give a formula for $\Phi(\overline{k})$ in terms of the graph $G$. Special cases of this formula already appear in \cite{lor2}; see, for instance, Proposition $4.19$ therein. A version of this formula is also implicit in the proof of \cite[Corollary~3.5]{lor1}. 
+
+\subsection{The formula}\label{raynaudsformula}
+% Let $\alpha \colon \Z^{V(G)} \rightarrow \Z$ be the map $(a_v)_{v \in V(G)} \mapsto \sum_{v \in V(G)} m_v a_v$. Let $(M_{vv'})$ be the $n \times n$ matrix defined as follows. If $v,v' \in V(G)$, then $M_{vv'} = \Gamma_v.\Gamma_{v'}$. Let $\beta \colon \Z^{V(G)} \rightarrow \Z^{V(G)}$ be the linear operator corresponding to the matrix $M$. Since $(\sum_{v' \in V(G)} m_{v'} \Gamma_{v'}).\Gamma_v = 0$, we have that $\im \beta \subset \ker \alpha$. \cite[p.274, 9.6, Th.1]{blr} tells us that the component group of the special fiber of the N\'{e}ron model of the Jacobian is equal to $\ker \alpha / \im \beta$. Call this group $\Phi$. 
+
+\begin{thm}\label{compformula}
+Let $m = \gcd(m_v \ | \ v \in V(G))$. Let $\Phi$ denote the component group scheme of the N\'{e}ron model of the Jacobian of $C$. Then,
+ \begin{equation}\label{formula}
+  \# \Phi(\overline{k}) = m^2 \left( \sum_{T \in S(G)} \prod_{v \in V(T)} m_{v}^{\# N_T(v)-2} \right) . 
+ \end{equation} 
+\end{thm}
+\begin{proof}
+Let $r = \# V(G)$. As in the statement of Corollary~\ref{maincorblr}, let $M$ be the $r \times r$ matrix corresponding to the intersection pairing. Let $a_v$ denote the absolute value of the $(r-1) \times (r-1)$ minor that we get from $M$ by deleting the row and column corresponding to the vertex $v$. Corollary~\ref{maincorblr} shows that if $v \in V(G)$, then the size of the component group is equal to $(\tfrac{m}{m_v})^2 a_v$. Let $(N_{vv'})$ be the $r \times r$ matrix defined by $N_{vv'} = m_v m_{v'} M_{vv'}$ for every $v,v' \in V(G)$. Fix a vertex $\tilde{v}$ of $G$. Let $b$ denote the absolute value of the $(r-1) \times (r-1)$ minor that we get from $N$ by deleting the row and column corresponding to the vertex $\tilde{v}$. Then
+\begin{align*}
+ \# \Phi(\overline{k}) &= \left( \frac{m}{m_{\tilde{v}}} \right)^2 a_{\tilde{v}} \\
+ &= \frac{m^2}{(\prod_{v \in V(G)} m_{v})^2} b \\
+ &=  \frac{m^2}{(\prod_{v \in V(G)} m_{v})^2}  \sum_{T \in S(G)} \prod_{e \in E(T)} \wt(e) \ \ \ \ (\textup{by Theorem}~\ref{matrixtreeforgraphs}) \\ 
+ &=  \frac{m^2}{(\prod_{v \in V(G)} m_{v})^2}  \sum_{T \in S(G)} \prod_{v \in V(T)} m_{v}^{\# N_T(v)} \\
+ &=  m^2 \left( \sum_{T \in S(G)} \prod_{v \in V(T)} m_{v}^{\# N_T(v)-2} \right), 
+\end{align*}
+since $V(T) = V(G)$ for any spanning tree $T$ of $G$.
+\end{proof}
+
+\begin{rmk}
+ The formula also holds under the assumption that $R$ is merely strictly Henselian, provided we also assume that all the $e_i$ are equal to $1$ and that $X$ admits a section.
+\end{rmk}
+% \begin{rmk}
+%  The formula unfortunately cannot directly be used to read off the prime divisors of $\Phi(\overline{k})$, which is a question that has been considered by many authors (reference?). (Some of the terms in the sum can even be fractions with non-trivial denominators.)
+% \end{rmk}
+\begin{rmk}
+ If the dual graph $G$ is a tree, the formula simplifies to 
+ \[ \# \Phi(\overline{k}) = m^2 \prod_{v \in V(G)} m_{v}^{\# N_G(v)-2} .\] 
+\end{rmk}
+\begin{rmk}
+ Specializing to the case where $C$ is an elliptic curve, we recover the correct sizes of the component groups for each of the Kodaira types. 
+\end{rmk}
+
+
+% \subsection{Examples}
+% 
+% % The good models that appear in \cite{lor} are a subset of the good models that we have defined here; the difference is that in his good models, two components of the special fiber have at most one point in common whereas there is no restriction on the number of intersection points of two components in the definition of good model here. 
+% \subsubsection{\bf{Elliptic curves}} 
+% Specializing to the case where $C$ is an elliptic curve, we recover the correct sizes of the component groups for each of the Kodaira types. 
+% % For types $II,III,IV$ we have to blow up the minimal proper regular model to obtain a good model. Amongst the other types, 
+% $II,III,IV$ and $I_n$ are the Kodaira types where the dual graph is not a tree. In all other cases, since the dual graph is already a tree, the corresponding set of spanning trees is a singleton set consisting of the whole graph. If the graph is already a tree, the formula simplifies to $\# \Phi =  \prod_{v \in V(G)} m_{v}^{\# N_G(v)-2}$.
+% 
+% \subsubsection{\bf{New examples ?}}
+
+\subsection{Applications of the formula}
+\subsubsection{Criterion for uniform bounds on the sizes of component groups}
+In the case of elliptic curves, the size of the component group is bounded above by $4$ if we exclude curves of reduction type $I_n$. In the theorem below, we provide a generalization of this fact for higher genus curves. We begin by proving a lemma in graph theory.
+
+\begin{lemma}\label{graph}
+ A vertex $v$ of a graph $G$ belongs to some cycle of $G$ if and only if there exists a spanning tree $T$ of $G$ and an edge $e \in E(G)$ such that $v \in D(e)$ and $e \notin E(T)$.
+\end{lemma}
+\begin{proof}[Sketch of proof]
+The `if' direction follows from the fact that adding any edge of $E(G) \setminus E(T)$ to a spanning tree produces a graph that contains a cycle. The `only if' direction follows from the fact that any spanning tree of $(V(G),E(G)\setminus \{e\},w)$ is a spanning tree of $G$, where $e$ is an edge in a cycle having $v$ as an endpoint.
+%  Fix $v \in V(G)$.
+% 
+%  First assume that $v$ belongs to a cycle $C$ of $G$. We have to produce a spanning tree $T$ of $G$ and an edge $e \in E(G)$ such that $v \in D(e)$ and $e \notin E(T)$. Let $w$ be one of the neighbours of $v$ in the cycle $C$ and let $e$ be the edge connecting $v$ and $w$. Then $v \in D(e)$. Let $H$ be the subgraph of $G$ that we get by deleting the edge $e$. In other words, let $H$ be the subgraph such that $V(H) = V(G)$ and $E(H) = E(G) \setminus \{ e \}$. Let $T$ be any spanning tree of $H$. Since $V(H) = V(G)$, the tree $T$ is also a spanning tree of $G$. Since $e \notin E(H)$ and $E(T) \subset E(H)$, we see that $e \notin E(T)$. This proves one implication in the lemma.
+%  
+%  Now assume that there exists a spanning tree $T$ of $G$ and an edge $e \in E(G)$ such that $v \in D(e)$ and $e \notin E(T)$. We will produce a cycle $C$ of $G$ such that $v \in V(C)$. Since $T$ is a spanning tree, adding any edge of $G$ to $T$ that is not already in $T$ produces a cycle in $G$. In other words, consider the subgraph $H$ of $G$ whose vertices satisfy $V(H) = V(T) = V(G)$ (the last equality holds since $T$ is a spanning tree) and whose edges satisfy $E(H) = E(T) \cup \{ e \}$. Then $H$ has a cycle $C$. Since the cycle $C$ is also a cycle in $G$ and since $v\in V(C)$, it follows that the vertex $v$ belongs to a cycle in $G$. This finishes the proof of the other implication and thus the proof of the lemma. 
+\end{proof}
+
+\begin{thm}\label{uniformbound}
+ Assume that $X/S$ is the minimal proper regular model of the curve $C/K$ and that the genus $g$ of $C$ satisfies $g \geq 2$. Let $G$ be the dual graph of $X_s$. Assume further that if $v \in V(G)$ corresponds to a $(-2)$-curve (that is, a $\P^1_k$ of self-intersection $-2$), then $v$ does not belong to any cycle of $G$.
+%  Assume further that all the edges in the dual graph of $X_s$ whose one end is a vertex corresponding to a $\P^1_k$ of self-intersection $-2$ also belong to the set of edges of every spanning tree of the dual graph. {\footnote{Is this the same thing as saying a vertex corresponding to a $-2$ curve does not belong to any cycle of the graph $G$?}} 
+ Then there exists an integer $n(g)$, depending only on the genus $g$ of $C$, such that the size of the component group of the special fiber of the N\'{e}ron model of the Jacobian of $C$ is bounded above by $n(g)$.
+\end{thm}
+\begin{proof}
+Lemma~\ref{graph} and the assumption on $(-2)$-curves in the theorem imply that the edges in any chain of $(-2)$-curves belong to every spanning tree. In other words, every chain of $(-2)$-curves is a connecting chain. Contracting all chains of $(-2)$-curves produces a graph $G'$. \cite[Corollary~4.3]{winters} implies that $G'$ is the dual graph of the special fiber of a regular $S$-curve $X'$. Since a vertex $v$ that is part of a connecting chain has exactly two neighbours in every spanning tree, the exponent $N_T(v)-2$ equals $0$ for every spanning tree $T$ for every such vertex. It follows that such a vertex does not contribute to the size of the component group by formula~\eqref{formula}. This implies that the size of the component group of $G'$ equals the size of the component group of $G$. Since we also assumed that $X$ is minimal and $g \geq 2$, Theorem~\ref{finsim} implies that there are only finitely many possibilities for the weighted dual graph of $X_s'$, if we fix the genus $g$ of $X'_{\eta}$. For a fixed $g$, we can compute the size of the component group of the special fiber of the N\'{e}ron model of the Jacobian for each of these finitely many weighted dual graphs and take the maximum of these numbers to be $n(g)$. 
+\end{proof}
+
+\begin{rmk}
+ The condition in the theorem above is strictly weaker than requiring the toric rank of $C$ be $0$. The toric rank $0$ condition would imply that the graph $G$ has no cycles.
+\end{rmk}
+
+\begin{rmk}
+ A na\"{i}ve bound for $n(g)$ that one gets by examining the Artin--Winters argument is $n(g) \sim O((2g-2)^{8(2g-2)^2})$. It might be possible to improve this bound by analyzing the combinatorics of these graphs more carefully.
+\end{rmk}
+
+\subsubsection{Structure of the component group: periodicity}
+We will now prove an analogue of \cite[Corollary~4.7]{bano}. The key step in the proof of Theorem~\ref{uniformbound} is the fact that contracting connecting chains in the dual graph does not alter the size of the component group. The structure of the group, however, does depend on the length of the chain. For example, the Kodaira types $I_n^*$ all have component groups of size $4$, but the component group is either $\Z/2\Z \times \Z/2\Z$  or $\Z/4\Z$ depending on whether $n$ is even or odd. In this example, the structure of the component group only depends on the length of the connecting chain modulo $2$. This suggests that if we have a family of dual graphs which only differ in the length of a single connecting chain, and if all the vertices in the connecting chain have multiplicity $m$, then the structure of the component group should be $m$-periodic, i.e., it should depend only on the length of the chain modulo $m$. More precisely:
+
+\begin{thm}\label{compcontract}
+ Let $G$ be the dual graph of the special fiber of a regular $S$-curve. Let $L$ be a length $\ell$ connecting chain in $G$, all of whose vertices have multiplicity $m$. Assume $\ell > m$. Let $G'$ be the graph corresponding to a partial contraction of the chain $L$, i.e., where we replace the chain $L$ in $G$ by a chain $L'$ of length $\ell-m$. Then $G'$ is the dual graph of the special fiber of another regular $S$-curve and the component group of $G'$ is isomorphic to the component group of $G$.
+\end{thm}
+\begin{proof}
+ By considering a suitable subchain of $L$, we may reduce to the case $\ell = m+1$. Theorem~\ref{typeexistence} shows that $G'$ is the dual graph of the special fiber of a regular $S$-curve. Let $\Phi(G) = \ker \beta/\im \alpha$ and let $\Phi(G') = \ker \beta'/\im \alpha'$ as in Section~\ref{raynaudsformula}. Choose an ordering $(v_0,v_1,\ldots,v_m)$ of $V(L)$ as in the definition of a chain, and let $V(L') = \{v_0'\}$. Let $f_* \colon V(G') \rightarrow V(G)$ be the unique section of the natural quotient map $V(G) \rightarrow V(G')$ that satisfies $f_*(v_0') = v_0$. Let $f \colon \Z^{V(G')} \rightarrow \Z^{V(G)}$ be the linear map defined by $f_*$ on the corresponding basis elements. Since $m_v = m_{f_*(v)}$ for every $v \in V(G')$, it follows that $\beta' = f \beta$. We will now define another map $h$ such that the maps in the following diagram commute. 
+ \begin{equation*}
+ {\xymatrix{
+\Z^{V(G')} \ar[dd]_{h} \ar[rr]^{\alpha'} & & \Z^{V(G')} \ar[dd]_{f} \ar[rr]^{\beta'} & & \Z \ar@{=}[dd] \\
+& & & & \\
+\Z^{V(G)} \ar[rr]^{\alpha} & & \Z^{V(G)} \ar[rr]^{\beta} & & \Z. 
+}}
+\end{equation*} 
+Once we have defined $h$, it will follow that we have a well-defined map from the homology $\Phi(G')$ of the top row to the homology $\Phi(G)$ of the bottom row, induced by the map $f$. Since $V(G')$ generates $\Z^{V(G')}$ freely, for every $v' \in V(G')$, it suffices to find $v \in \Z^{V(G)}$ (depending on $v'$) such that $\alpha h(v') = f \alpha'(v')$. 
+
+Let $S = \{v_0'\} \cup f_*^{-1}(N_G(v_m))$. If $v' \in V(G') \setminus S$, then let $h(v') \colonequals f_*(v')$. One can check that with this definition that $\alpha h$ and $f \alpha'$ agree on $V(G') \setminus S$. Let $v' \in f_*^{-1}(N_G(v_m))$. Then $f(\alpha'(v')) = \alpha(f_*(v'))+\Gamma_{v'}.\Gamma_{v_0'}(v_0-v_m)$. In this case, it suffices to find $u_1 \in Z^{V(G)}$ such that $\alpha(u_1) = \Gamma_{v'}.\Gamma_{v_0'}(v_0-v_m)$, since we can then define $h(v') = f_*(v')+u_1$. Similarly, we also have $f(\alpha'(v_0')) = \alpha(v_0+v_m)-v_1-v_{m-1}+2v_m$. It therefore suffices to find $u_2 \in \Z^{V(G)}$ such that $\alpha(u_2) = 2v_m-v_1-v_{m-1}$. We may then define $h(v_0') = v_0+v_m+u_2$. 
+
+% The construction of the elements $u_1$ and $u_2$ is most conveniently stated using the language of chip-firing games; we recall some of the terminology that we will use. 
+%  
+% An element $A \in \Z^{V(G)}$ will be referred to as a configuration of chips. Firing a single vertex $v \in V(G)$ replaces the configuration $A$ by $A+\alpha(v)$. Given $S \subset V(G)$ and a function $n \colon S \rightarrow \Z$, firing the pair $(S,n)$ replaces $A$ by $A+\sum_{v \in S} n(v) \alpha(v)$ (the integer $n(v)$ represents the number of times the vertex $v$ is fired). If we talk about firing a set $S$ without specifying a function $n$, then we take $n$ to be the multiplicity function, i.e., $n(v) = m_v$. 
+ 
+Since $L$ is a connecting chain, the complement $G \setminus L$ breaks up into two connected components $D$ and $D'$. Assume that $D$ is adjacent to $v_0$ and $D'$ is adjacent to $v_m$. Let $u = mv_m+\sum_{v \in V(D')} m_v v$. Then $\alpha(u) = m(v_{m-1}-v_m)$. Let $w_1 = \sum_{i=1}^{m-1} i v_i$ and let $w_2 = \sum_{i=2}^{m-1} -(i-1)v_i$. Let $u_1 = \Gamma_{v'}.\Gamma_{v_0'}(w_1+u)$, and let $u_2 = w_2-u$. Then $\alpha(u_1) = \Gamma_{v'}.\Gamma_{v_0'}(v_0-v_m)$ and $\alpha(u_2) = 2v_m-v_1-v_{m-1}$.
+
+We have now proved that $f$ induces a well-defined map from $\Phi(G')$ to $\Phi(G)$. We want to prove that this map is an isomorphism. Since $|\Phi(G')| = |\Phi(G)|$ (by the proof of Theorem~\ref{uniformbound}), it suffices to prove that it is a surjection. Let $u \in \ker \beta$. For $0 \leq i \leq m$, let $w_i = v_{m-i}$. We will inductively construct a sequence of elements $u_0,u_1,\ldots,u_m$ such that 
+ \begin{itemize}
+  \item $u_0 = u$ and $u_m \in \im f$,
+  \item For every $i$ satisfying $1 \leq i \leq m$, we have $u_{i+1}-u_i \in \im \alpha$. 
+  \item For every $i$ satisfying $1 \leq i \leq m$, the coefficient of $v_{m-i}$ in $u_i$ for $i \leq i-1$ is $0$.  
+ \end{itemize}
+ For the inductive step, suppose $u_i = \sum -a^v v$. Let 
+ \[ u_{i+1} = u_i + \alpha(a^{v_{m-i}} v_{m-i-1}) = u_i+a^{v_{m-i}}(v_{m-i-2}+v_{m-i}-2v_{m-i-1}) .\] 
+ From the equation above, it follows that the coefficient of $v_{m-j}$ for $j \leq i-1$ in $u_{i+1}$ is the same as that in $u_i$, and that the coefficient of $v_{m-i}$ in $u_{i+1}$ is $-a^{v_{m-i}}+a^{v_{m-i}} = 0$. So to finish the construction, it now suffices to prove that $u_m \in \im f$. 
+ 
+ Let $T = V(D) \cup V(D') \cup \{v_0\}$. By the definition of the map $f$, it maps $\Z^{V(G')}$ isomorphically on to the subset of elements of $\Z^{V(G)}$ supported on $T$. This isomorphism maps elements of $\ker \beta'$ isomorphically to elements of $\ker \beta$ supported on $T$. Since $u_m \in \ker \beta$ and is supported on $T$, this shows that $u_m \in \im f$.  Since $u_m-u_0 \in \im \alpha$, this completes the proof of surjectivity of $f$.   
+\end{proof}
+
+\begin{rmk}
+ Fix $g$. It is possible to list all the groups that can arise as the component group of the Jacobian of a nice curve of genus $g$ by combining the theorem above with Theorem~\ref{finsim}.
+\end{rmk}
+
+\subsubsection{The N\'{e}ron component series for Jacobians}\label{altprfcomp}
+In this section, we provide an alternate proof of \cite[Chapter~3, Proposition~3.1.1]{halnic}, that works in both the equal characteristic and mixed characteristic cases. For the proof, we use the explicit formula in Theorem~\ref{compformula} and the behaviour of {\textup{snc}} models under tame extensions, as described in Section~\ref{deftameext}.
+
+\begin{prop}\cite[Chapter~3, Proposition~3.1.1]{halnic}\label{newproof}
+ Let $X$ be the minimal {\textup{snc}} model of a nice $K$-curve of genus $g \geq 1$. Let $d \in \N'$ be an integer prime to $e(X)$. Let $\mathcal{A}$ denote the N\'{e}ron model of the Jacobian of $X_\eta$ and let $\mathcal{A}(d)$ denote the N\'{e}ron model of the Jacobian of $X \times_K K(d)$. Let $t$ denote the toric rank of $\mathcal{A}$. Then
+ \[ |\Phi(\mathcal{A}(d))| = d^t |\Phi(\mathcal{A})| .\]
+\end{prop}
+\begin{proof}
+ Let $X(d)$ be the minimal desingularization of the normalization $X_d$ of $X \times_R R(d)$. Let $G$ be the dual graph of $X_s$ and let $G'$ be the dual graph of $X(d)_s$. As mentioned before Proposition~\ref{comodel}, $X(d)$ is a {\textup{snc}} model. Let $J$ be the Jacobian of $X_\eta$.
+  
+ \begin{itemize}
+  \item Case 1: $J$ is an elliptic curve with multiplicative reduction.
+  In this case, \cite[Theorem~6.6]{llr} tells us that the minimal {\textup{snc}} model and the minimal regular model coincide, and $X_s$ is also a cycle of rational curves, where the rational curves in the cycle all have the same multiplicity, say $m$. Since the number of spanning trees of $G$ equals the number of vertices in the cycle, and for each spanning tree $T$, the product $\prod_{v \in V(T)} m_v^{N_T(v)-2}$ equals $1/m^2$, the explicit formula in Theorem~\ref{compformula} implies that the size of the component group of the N\'{e}ron model of $J$ equals the number of vertices in the cycle $G$.   
+%   Let $H$ be the dual graph of the special fiber of the minimal {\textup{snc}} model of $J$, and let $H'$ be the dual graph of the special fiber of the minimal {\textup{snc}} model of $J(d) \colonequals J \times_K K(d)$. The same argument holds for $J,X(d)$ and $J(d)$. Since \cite[Theorem~6.6]{llr} tells us that the number of rational curves in the cycle $X_s$ equals the number of rational curves in the special fiber of the minimal {\textup{snc}} model of $J$ (and similarly for $X_s$).  
+  
+  We will first show that $X(d)_s$ is also a cycle of rational curves, and then compute the number of rational curves in the loop. Formula~\ref{formula} would once again imply that the size of the component group equals the number of vertices in the cycle $G'$.
+ 
+ Proposition~\ref{comodel}(ii) implies that every component of $(X_d)_s$  intersects exactly two other components. Since $(X_d)_s$ is connected by Zariski's connectedness principle, we conclude that it is a cycle of rational curves. Proposition~\ref{comodel}(iii) tells us that in order to obtain $X(d)_s$ from $(X_d)_s$, we have to replace each node in the cycle of rational curves by a chain of rational curves of appropriate length. This implies that $(X_d)_s$ is also a cycle of rational curves. Now,
+ \begin{itemize}
+  \item Proposition~\ref{comodel}(ii) implies that the number of irreducible components of $(X_d)_s$ equals $\gcd(d,m)$ times the number of irreducible components of $X_s$. 
+  \item Proposition\ref{comodel}(iii) and Proposition~\ref{combdata} imply that the preimage of each singular point of $(X_d)_s$ is a chain of rational curves, where the number of rational curves in the chain equals $d/\gcd(d,m)$. 
+  \item The number of singular points of $(X_d)_s$ equals the number of irreducible components of $(X_d)_s$. 
+ \end{itemize}
+ Combining the arguments above, we conclude that the number of irreducible components of $X(d)_s$ is $d$ times the number of irreducible components of $X_s$, and this finishes the proof in this case, since the toric rank $t$ equals $1$.
+ 
+ \item Case 2: $J$ is not an elliptic curve with multiplicative reduction. Then either $g \geq 2$, or $J$ is an elliptic curve with good or additive reduction. Lemma~\ref{dgraphbaseext} implies that $X_s$ and $(X_d)_s$ have the same dual graph. Proposition~\ref{comodel}(iii) implies that $G'$ is a subdivision of $G$. Let $\pi \colon E(G') \rightarrow E(G)$ be the surjective map that maps an edge of $G'$ to the unique edge in $G$ that it is a subdivision of. Let $v$ and $w$ be neighbouring vertices of $G$. In this case, the proof of \cite[Lemma~2.3.2]{halnic} tells us that $\gcd(d,m_v,m_w) = 1$. Let
+ \begin{itemize}
+  \item $h_v = \gcd(d, m_v)$, 
+  \item $h_w = \gcd(d, m_w)$,
+  \item $m_v = h_v m_v'$,
+  \item $m_w = h_w m_w'$, and,
+  \item $d = h_v h_w d'$.
+ \end{itemize}
+ Then $dm_v' m_w' = d'm_v m_w$. Let $v'$ and $w'$ be the corresponding vertices of $G'$ and let $u_1, u_2, \ldots, u_\lambda$ be the intermediate vertices. Then Lemma~\ref{dgraphbaseext}(ii) tells us that $m_{v'} = m_v'$ and $m_{w'} = m_w'$. Let $r$ be the unique solution to $rm_{v'}+m_{w'} = 0 \mod d'$. Let $(\mu_1,\mu_2, \ldots, \mu_{\lambda})$ be the multiplicity vector associated to the tuple $(d',r,m_{v'},m_{w'})$. By Proposition~\ref{combdata} $m_{u_i} = \mu_i$. By Lemma~\ref{curious},
+ \begin{equation}\label{scale}
+ \frac{d}{m_v m_w} = \frac{d'}{m_v' m_w'} = \frac{1}{m_v' \mu_1} + \frac{1}{\mu_1 \mu_2} + \cdots + \frac{1}{\mu_{\lambda-1} \mu_\lambda} + \frac{1}{\mu_\lambda m_w'} . 
+ \end{equation}
+ An inductive argument on the length $\lambda$ of the continued fraction expansion can be used to show $\gcd(m_{v'},m_{w'}) = \gcd(m_{v'},\mu_1,\ldots,\mu_{\lambda},m_{w'})$. This tells us that the gcd of the multiplicities of the components of $X_d$ equals the gcd of the multiplicities of the components of $X(d)$.
+ 
+ Let $H$ be a connected graph. Let $S(H)$ be the collection of spanning trees of $H$. The first Betti number $t(H)$ of a connected graph $H$ equals $|V(H)|-|E(H)|+1$. Let $T \in S(H)$. Since $|V(H)| = |V(T)|$, and the first Betti number of a tree equals $2$, it follows that $\# (V(H) \setminus V(T)) = t(H)$. For a spanning tree $T$ of a dual graph $H$, let $\phi(T) = \prod_{v \in V(H)} m_v^{N_T(v)-2}$. Fix a dual graph $H$. Let $\delta \colon E(H) \rightarrow \N$ be the map defined by $\delta(e) \colonequals m_v m_w$, where $v$ and $w$ are the endpoints of $e$, and $m_v$ and $m_w$ are the multiplicities of the corresponding irreducible components in the special fiber. 
+ 
+ Fix $T' \in S(G')$. Let $T$ be the subgraph of $G$ such that $V(T) = V(G)$ and such that $E(T) = \{ e \in E(T) \ | \ \pi^{-1}(e) \subset E(T') \}$. Since $G'$ is a subdivision of $G$, it follows that $T$ is a spanning tree of $G$. The construction $T' \mapsto T$ defines a map $\tau \colon S(G') \rightarrow S(G)$. Let $T' \in S(B')$ and let $\tau(T') = T$. Let $B' = E(G') \setminus E(T')$ and let  $B = E(G) \setminus E(T)$. Let $\pi_T$ be the restriction of $\pi$ to $\pi^{-1}(B)$. Let $\epsilon \colon \pi^{-1}(B) \rightarrow \Q^\times$ be the map defined by $\epsilon(e) = \delta(\pi(e))/\delta(e)$. Since $G'$ is a subdivision of $G$, it follows that
+ \begin{itemize}
+  \item $t(G') = t(G)$, and,
+  \item there is a multiplicity-preserving bijection between the vertices of $T'$ of degree $\geq 3$ and those of $T$ of degree $\geq 3$.
+ \end{itemize}
+The two facts above imply that 
+\[ \phi(T')/\phi(T) = \prod_{e \in B'} \epsilon(e) .\]
+Since $G'$ is a subdivision of $G$, it follows that there exists a bijection
+\[ \{ T'' \in S(G') \ | \ \tau(T'') = T \} \longleftrightarrow \textup{Sections } \sigma \colon B \rightarrow \pi^{-1}(B) \textup{ of } \pi_T .\]
+Let $\mathfrak{s}$ denote the set of sections of $\pi_T$. Since $t(G) = t(G')$, and the toric rank $t$ equals the first Betti number of the graphs $G$ and $G'$ (by \cite[9.2.5,9.2.8]{blr}), it follows that $\# B = \# B' = t$. Now
+\begin{align*} \sum_{T' \in \tau^{-1}(T)} \frac{\phi(T')}{\phi(T)} &= \sum_{\sigma \in \mathfrak{s}} \prod_{e \in B} \epsilon (\sigma(e)) \\
+&= \prod_{e \in B} \sum_{e' \in \pi^{-1}(e)} \epsilon(e') \\
+&= \prod_{e \in B} \delta(e) \sum_{e' \in \pi^{-1}(e)} \frac{1}{\delta(e')} \\
+&= \prod_{e \in B} \delta(e) \frac{d}{\delta(e)} \ \ \ (\textup{by Equation~\eqref{scale}}) \\
+&= d^{\# B} = d^t.
+\end{align*}
+Now
+\[ \sum_{T' \in S(G')} \phi(T') = \sum_{T \in S(G)} \sum_{T' \in \tau^{-1}(T)} \phi(T') = \sum_{T \in S(G)} d^t \phi(T)  .\]
+By the formula in Theorem~\ref{compformula}, in order to finish the proof, it now suffices to prove that $\gcd(m_v \ | \ v \in V(G)) = \gcd(m_{v'} \ | \ v' \in V(G'))$. Since the gcd of the multiplicities of the components of $X_d$ and the gcd of the multiplicities of the components of $X(d)$ are equal, it now suffices to prove $\gcd(m_v \ | \ v \in V(G)) = \gcd(m_v/\gcd(m_v,d) \ | \ v \in V(G))$. The right hand side divides the left hand side. To prove the other divisibility, we can use the fact that if $v$ and $w$ are any pair of neighbouring vertices in $G$, then $\gcd(m_v,m_w,d) = 1$ (this follows from the proof of Lemma~\ref{dgraphbaseext} in \cite{halnic}). This concludes the proof.
+\end{proof}
+
+\section{Explicit computation of Tamagawa numbers}\label{tamagawa}
+%Let $C$ be a nice curve over $K$ and let $X$ be a regular model for $C$ over $R$. The component group $\Phi$ which was defined in Section~\ref{compgroup} is in fact the set of $\overline{k}$ points of a finite \'{e}tale $k$-group scheme $\phi$, called the component group scheme. The size of the set of $k$ points of this scheme is the Tamagawa number associated to the curve $C$. 
+
+In this section, we will show that we can use a version of the matrix-tree theorem for directed weighted multigraphs to compute Tamagawa numbers. The notation used in this section is consistent with the notation in Section~\ref{introtam}. 
+
+% In this section, we do not assume that the residue field $k$ is algebraically closed. We assume that $k$ is perfect and we let $\overline{k}$ denote an algebraic closure of $k$. Let $R^{\textup{st}}$ denote the strict Henselization of $R$. Let $X$ be a regular $S$-curve. 
+
+\subsection{The quotient graph $\widetilde{G}$}
+Let $X^{\textup{st}} = X \times_R R^{\textup{st}}$. Let $G$ denote the dual graph of $X^{\textup{st}}_s$, and let $V = V(G)$. We now define a directed weighted multigraph $\widetilde{G}$, which we call the quotient graph. The set of vertices of $\widetilde{G}$, which we denote $\widetilde{V}$, is the the set of irreducible components of $X_s$. The set $\widetilde{V}$ can also naturally be identified with the set of orbits of $V$ under the natural action of $\Gal (\overline{k}/k)$. This identification gives rise to a quotient map $\pi \colon V \rightarrow \widetilde{V}$ where we map a vertex $v$ to the corresponding orbit. For any two vertices $\tilde{w}$ and $\tilde{v}$ in $\widetilde{V}$, the number of directed edges with tail $\tilde{w}$ and head $\tilde{v}$, which we denote $\alpha_{\tilde{w} \tilde{v}}$, is defined as follows. Fix any $w \in \pi^{-1}(\tilde{w})$.  Then, $\alpha_{\tilde{w} \tilde{v}} = \sum_{v \in \pi^{-1}(\tilde{v})} \Gamma_v.\Gamma_w$. Since the Galois action transitively permutes the 
+vertices $w \in \pi^{-1}(\tilde{w})$ and preserves intersection numbers, the sum is independent of the choice of $w \in \pi^{-1}(\tilde{w})$. This defines the vertices and directed edges of $\widetilde{G}$.
+
+We now define a weight function on $\widetilde{G}$. For every $\tilde{v} \in \widetilde{V}$, let $|\tilde{v}|$ denote the size of the orbit corresponding to $\tilde{v}$. For any $\tilde{v} \in \widetilde{V}$, let $\Gamma_{\tilde{v}}$ denote the corresponding irreducible component of $X_s$, and let $m_{\tilde{v}}$ denote the multiplicity of $\Gamma_{\tilde{v}}$ in the special fiber $X_s$. For any directed edge $e$ of the form $(\tilde{w},\tilde{v})$, the weight of the edge $e$, denoted $\wt(e)$ is defined to be $m_{\tilde{v}} m_{\tilde{w}} |\tilde{w}|$. 
+
+\subsection{Explicit computation of Tamagawa numbers}
+In this section, we will show how to combine Theorem~\ref{galcoh} and Theorem~\ref{matrixtree} to explicitly compute Tamagawa numbers. In the rest of this section, we will assume that $\Gal (\overline{k}/k)$ is procyclic in order to be able to apply Theorem~\ref{galcoh}.
+
+\begin{rmk}
+The size of the component group can also be computed using using Theorem~\ref{matrixtree} (this corresponds to the special case where $k = \overline{k}$). The formula that we obtain for the component group using Theorem~\ref{matrixtree} can be checked to be equal to the formula obtained in Theorem~\ref{compformula}. We included the proof in Section~\ref{compgroup} since 
+the graph that appears in Section~\ref{compgroup} is more closely related to the dual graph that appears in algebraic geometry.
+\end{rmk}
+
+Let $\alpha$ and $\beta$ be as in Section~\ref{introtam}. We now show that if we make the appropriate modifications to $\alpha$ and $\beta$, we can use Theorem~\ref{matrixtree} to compute Tamagawa numbers. Define maps $\delta_1, \delta_2, \alpha_1,\beta_1,\beta_2$ as follows:
+\begin{align*}
+ \delta_1 &\colon \Z^{\widetilde{V}} &\rightarrow \Z^{\widetilde{V}} \\
+ & (b_{\tilde{v}}) &\mapsto (b_{\tilde{v}}m_{\tilde{v}}|\tilde{v}|) \\
+ \delta_2 &\colon \Z^{\widetilde{V}} &\rightarrow \Z^{\widetilde{V}} \\
+ & (b_{\tilde{v}}) &\mapsto (b_{\tilde{v}}m_{\tilde{v}}) \\
+\alpha_1 &= \delta_1 \circ \alpha \circ \delta_2 & \\
+\beta_1 &\colon \Z^{\widetilde{V}} &\rightarrow \Z \\
+ & (b_{\tilde{v}}) &\mapsto \sum_{\tilde{v} \in \widetilde{V}} b_{\tilde{v}} \\
+\beta_2 &\colon \Z &\rightarrow \Z^{\widetilde{V}} \\
+ b &\mapsto (b,b,\ldots,b) & .
+\end{align*}
+We have $\beta_1 \delta_1 = \beta$, so $\beta_1 \alpha_1 = \beta_1 \delta_1 \alpha \delta_2 = \beta \alpha \delta_2 = 0$, so $\im(\alpha_1) \subset \ker{\beta_1}$.
+
+We now prove a lemma in linear algebra that allows us to compare the sizes of the finite groups $\ker(\beta_1)/\im(\alpha_1)$ and $\ker(\beta)/\im(\alpha)$.
+\begin{lemma}\label{linear}
+Let $n$ be a nonnegative integer. Let $D, D' \colon \Z^n \rightarrow \Z^n$ be two rank $n$ linear operators whose matrices are diagonal. Let $A \colon \Z^n \rightarrow \Z^n$ be a rank $n-1$ linear operator. Let $S \colon \Z^n \rightarrow \Z$ denote the linear operator which takes a vector to the sum of its coordinates, and let $\Delta \colon \Z \rightarrow \Z^n$ denote the diagonal embedding. Assume $SDA = 0$ and $AD'\Delta = 0$. Let $d,d'$ be positive integers such that $d\Z = \im \left( SD \right)$ and $d'\Z = \im \left( SD' \right)$ respectively. Then
+\[ \# \frac{\ker (S D) }{\im A} = \frac{d}{|\det D|} \# \frac{\ker S }{\im (D A)} = \frac{dd'}{|\det D| |\det D'|} \# \frac{\ker S }{\im ( D A D' )} .\]
+\end{lemma}
+\begin{proof}
+ We can reduce to the case that $d=d'=1$ by replacing $D$ by $\tfrac{1}{d}D$ and replacing $D'$ by $\tfrac{1}{d'}D'$. This is possible since the hypotheses $\rank A = n-1$ and $\rank D = \rank D' = n$ imply that 
+ \begin{itemize}
+  \item $\im \left( DA \right)$ has index $d^{n-1}$ in $\im \left( \tfrac{1}{d} DA \right)$,
+  \item $\im \left( DAD' \right)$ has index $d^{n-1}d'^{n-1}$ in $\im \left( \tfrac{1}{dd'} DAD' \right)$, 
+  \item $\det D = d^n \det \left( \tfrac{1}{d}D \right)$, and,
+  \item $\det D' = d'^n \det \left( \tfrac{1}{d'}D' \right)$.
+ \end{itemize}
+We now prove the first equality. Since $D$ is an injection, we have $\ker (S D) = D^{-1}(\ker S)$ and $\im A = D^{-1} (\im (DA) )$. This gives us the following short exact sequence,
+\[ 0 \rightarrow \frac{\ker (SD)}{\im A} \xrightarrow{D} \frac{\ker S}{\im (DA)} \rightarrow \frac{\ker S}{\ker S \cap \im D} \rightarrow 0 ,\]
+where the map on the right is the quotient map induced by the inclusion $\im (DA) \subset \ker S \cap \im D$. The inclusion of $\ker S$ into $\Z^n$ induces the following exact sequence:
+\[ 0 \rightarrow \frac{\ker S}{\ker S \cap \im D} \rightarrow \frac{\Z^n}{\im D} \rightarrow \frac{\Z^n}{\ker S + \im D} \rightarrow 0 .\]
+Since $d=1$, we have $\im (SD) = \Z \ (= \im S)$ and therefore $\tfrac{\Z^n}{\ker S + \im D} \cong \tfrac{\im S}{\im (SD)} = 0$. Putting these two exact sequences together, we get
+\[ 0 \rightarrow \frac{\ker (SD)}{\im A} \xrightarrow{D} \frac{\ker S}{\im (DA)} \rightarrow \frac{\Z^n}{\im D} \rightarrow 0 . \]
+
+Since all the groups in the above exact sequence are finite and $\# \left( \tfrac{\Z^n}{\im D} \right) = |\det D|$, we get 
+\[ \# \left( \frac{\ker (S D) }{\im A} \right) |\det D| =  \# \left( \frac{\ker S }{\im (D A)} \right) .\]
+This finishes the proof of the first equality.
+
+We now prove the other equality. Let $A' = DA$. Since $D$ is injective and $A$ has rank $n-1$, it follows that $A'$ has rank $n-1$. Since $A'D'\Delta = 0$, it follows that $\im (D'\Delta) \subset \ker A'$. Since $A'$ has rank $n-1$ and $d'=1$, we also have $\ker A' \subset \im (D' \Delta)$ and therefore $\ker A' \subset \im D'$. Therefore, 
+\[ \frac{(A')^{-1}(\im (A'D'))}{\im D'} = \frac{\ker A' + \im D'}{\im D'} \cong \frac{\ker A'}{\ker A' \cap \im D'} = 0 .\]
+Now the equality we want to show follows directly from the following two exact sequences, just as before. The maps in the first exact sequence are the natural inclusion/quotient maps induced by the inclusions $\im (A') \subset \ker S$ and $\im (A'D') \subset \im A'$. 
+\[ 0 \rightarrow \frac{\im A'}{\im (A'D')} \rightarrow \frac{\ker S}{\im (A'D')} \rightarrow \frac{\ker S}{\im A'} \rightarrow 0 .\]
+\[ 0 \rightarrow \frac{(A')^{-1}(\im (A'D'))}{\im D'} \rightarrow \frac{\Z^n}{\im D'} \xrightarrow{A'} \frac{\im A'}{\im (A'D')} \rightarrow 0 . \qedhere\]
+\end{proof}
+
+Let $m$ and $\tilde{m}$ be defined as in Theorem~\ref{galcoh}. 
+\begin{lemma}\label{compare}
+\[ \# \left( \frac{\ker{\beta}}{\im{\alpha}} \right)  = \frac{m \tilde{m}}{\prod_{\tilde{v} \in \widetilde{V}} m_{\tilde{v}}^2 |\tilde{v}| } \ \# \left( \frac{\ker{\beta_1}}{\im{\alpha_1}} \right) .\] 
+\end{lemma}
+\begin{proof}
+This follows directly from Lemma~\ref{linear} with $A = \alpha, D = \delta_1$ and $D' = \delta_2$. \qedhere
+%  It suffices to show that the $p$-adic valuations of both sides agree for every prime $p \in \Z$. For every $\tilde{w} \in \widetilde{V}$, let $p^{a_{\tilde{w}}}$ be the largest power of $p$ that divides $m_{\tilde{w}}|\tilde{w}|$ and let $p^{b_{\tilde{w}}}$ be the largest power of $p$ that divides $m_{\tilde{w}}$. Let $a = \min \{a_{\tilde{w}} | \tilde{w} \in \widetilde{V}\}$ and let $b = \min \{b_{\tilde{w}} | \tilde{w} \in \widetilde{V}\}$. Since localization is exact, we have $\ker(\beta)_{(p)} \cong (\ker(\beta))_{(p)}, \im(\alpha)_{(p)} \cong (\im(\alpha))_{(p)}$ and the following isomorphism 
+%  \[ \left( \frac{\ker{\beta}}{\im{\alpha}} \right)_{(p)} \cong \frac{\ker{\beta}_{(p)}}{\im{\alpha}_{(p)}} .\]
+%  Here, the subscript $(p)$ denotes the maps/groups that we get upon tensoring the with $\Z_{(p)}$ (or what is the same, it amounts to taking the $p$-primary torsion parts of the corresponding groups, and taking the restriction of the maps between the $p$-primary torsion parts). Similarly, we get another isomorphism by replacing $\beta$ and $\alpha$ with $\beta_1$ and $\alpha_1$ in the previous isomorphism. 
+ 
+%  By localizing at $p$, we reduce to proving
+%  \[ \# \left( \frac{\ker{\beta}_{(p)}}{\im{\alpha}_{(p)}} \right) = \left( \frac{p^{a+b}}{\prod_{\tilde{w} \in \widetilde{V}} p^{a_{\tilde{w}}+b_{\tilde{w}}}} \right) \# \left( \frac{\ker{\beta_1}_{(p)}}{\im{\alpha_1}_{(p)}} \right) .\] 
+%  
+%  Let $\tilde{v} \in \widetilde{V}$ be such that $a_{\tilde{v}} = a$ and let $\tilde{v}' \in \widetilde{V}$ be such that $b_{\tilde{v}'} = b$. Let $e_{\tilde{w}}$ denote the $\tilde{w}^{\textup{th}}$ basis vector for $\Z^{\widetilde{V}}$. A basis for $(\ker{\beta})_{(p)}$ is then given by $\{ e_{\tilde{w}} - k_{\tilde{w}} e_{\tilde{v}} | \tilde{w} \in \widetilde{V} \setminus \{ \tilde{v} \} \}$. Similarly, a basis for $(\im{\alpha})_{(p)}$ is $\{ \alpha_{(p)}(e_{\tilde{w}}) \ | \ \tilde{w} \in \widetilde{V} \setminus \{ \tilde{v}' \} \}$. 
+%  
+%  Let $M$ be the matrix for $\alpha$ with respect to the basis $(e_{\tilde{w}})_{\tilde{w} \in \widetilde{V}}$. The matrix that we get by writing the chosen basis for $\im{\alpha}_{(p)}$ in terms of the chosen basis for $(\ker{\beta})_{(p)}$ is exactly the minor of the matrix $M$ that we get by omitting the row corresponding to $\tilde{v}$ and column corresponding to $\tilde{v}'$. Call this minor $A$. Let $\det A = up^d$ for some unit in $\Z_{(p)}$ and integer $d$ (the determinant is non-zero by ****). Then, the size of the group $\frac{\ker{\beta}_{(p)}}{\im{\alpha}_{(p)}}$ is $p^d$.
+%  
+%  Let $N$ be the matrix defined by $N_{\tilde{a} \tilde{b}} = m_{\tilde{b}} m_{\tilde{a}} |\tilde{a}| M_{\tilde{a} \tilde{b}}$ (here $\tilde{a}$ is the row index and $\tilde{b}$ is the column index and $M_{\tilde{a} \tilde{b}}$ denotes the entry of $M$ corresponding to row index $\tilde{a}$ and column index $\tilde{b}$). One can then check that $N$ is the matrix for $\alpha_1$ with respect to the basis $(e_{\tilde{w}})_{\tilde{w} \in \widetilde{V}}$. Let $B$ be the minor of $N$ that we get by omitting the row corresponding to $\tilde{v}$ and column corresponding to $\tilde{v}'$. 
+%  
+%  Then,
+%  \[ \det A = u' \left( \frac{p^{a+b}}{\prod_{\tilde{w} \in \widetilde{V}} p^{a_{\tilde{w}}+b_{\tilde{w}}}} \right) \det B \]
+%  for some unit $u' \in \Z_{(p)}$. 
+%  Let $\det B = u''p^{d'}$ for some unit $u''$ and integer $d'$. Using a similar computation using bases like we did for $\alpha$ and $\beta$, we can check that the size of the group $\frac{\ker{\beta_1}_{(p)}}{\im{\alpha_1}_{(p)}}$ is $p^{d'}$. 
+%  
+%  Let $\nu_p$ denote the $p$-adic valuation on $\Q$. Then,
+%  \begin{align*}
+%  \# \left( \frac{\ker{\beta}_{(p)}}{\im{\alpha}_{(p)}} \right) &= p^{\nu_p(\det A)} \\
+%  &= \left( \frac{p^{a+b}}{\prod_{\tilde{w} \in \widetilde{V}} p^{a_{\tilde{w}}+b_{\tilde{w}}}} \right)  p^{\nu_p(\det B)}  \\
+%  &= \left( \frac{p^{a+b}}{\prod_{\tilde{w} \in \widetilde{V}} p^{a_{\tilde{w}}+b_{\tilde{w}}}} \right) \# \left( \frac{\ker{\beta_1}_{(p)}}{\im{\alpha_1}_{(p)}} \right).
+%  \end{align*}
+%  
+ 
+ %Then there exist $k_{\tilde{w}}, l_{\tilde{w}} \in \Z_{(p)}$ such that $m_{\tilde{w}}|\tilde{w}| = k_{\tilde{w}} m_{\tilde{v}}|\tilde{v}|$ and $m_{\tilde{w}} = l_{\tilde{w}} m_{\tilde{v}'}$. 
+\end{proof}
+
+We will now show how we can use Theorem~\ref{matrixtree} to compute $\# (\ker{\beta_1}/\im \alpha_1)$. Recall the definition of the graph $\tilde{G}$ as defined in the beginning of this section.
+\begin{lemma}\label{applyingmt}
+ Fix a vertex $\tilde{v}$ of the directed weighted multigraph $\widetilde{G}$. Let $\widetilde{S}_{\tilde{v}}(\widetilde{G})$ be the set of directed spanning trees into the vertex $\tilde{v}$. Then
+ \[ \# \left( \frac{\ker{\beta_1}}{\im{\alpha_1}} \right) = \sum_{T \in \widetilde{S}_{\tilde{v}}(\widetilde{G})} \prod_{e \in E(T)} \wt(e)  .\]
+\end{lemma}
+\begin{proof}
+ Since $X_s$ is connected, every vertex of $\widetilde{G}$ is a sink. The proof then reduces to a direct application of Theorem~\ref{matrixtree}, after we observe that $\# \left( \tfrac{\ker{\beta_1}}{\im{\alpha_1}} \right)$ is equal to the absolute value of the determinant of the reduced Laplacian operator on $\widetilde{G}$, with the fixed vertex $\tilde{v}$ as the sink.
+\end{proof}
+
+Let $q, m$ and $\tilde{m}$ be defined as in Theorem~\ref{galcoh}.
+\begin{thm}\label{tamnum}
+\begin{equation*}
+ \# \Phi(k) = q \ \frac{m^2}{\prod_{\tilde{w} \in \widetilde{V}} m_{\tilde{w}}^2 |\tilde{w}|} \ \left( \sum_{T \in \widetilde{S}_{\tilde{v}}(\widetilde{G})} \prod_{e \in E(T)} \wt(e) \right)   .
+\end{equation*} 
+\end{thm}
+\begin{proof}
+ Combine Theorem~\ref{galcoh}, Lemma~\ref{compare} and Lemma~\ref{applyingmt}.
+\end{proof}
